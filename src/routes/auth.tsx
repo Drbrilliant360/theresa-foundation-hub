@@ -10,11 +10,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 
-type AuthSearch = { mode?: "login" | "register" };
+type AuthSearch = { mode?: "login" | "register" | undefined };
 
 export const Route = createFileRoute("/auth")({
   validateSearch: (search: Record<string, unknown>): AuthSearch => ({
-    mode: search.mode === "register" ? "register" : "login",
+    mode: search["mode"] === "register" ? "register" : "login",
   }),
   head: () => ({
     meta: [
@@ -53,7 +53,10 @@ function AuthPage() {
       password: String(fd.get("password")),
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Welcome back!");
     navigate({ to: "/dashboard" });
   }
@@ -71,7 +74,10 @@ function AuthPage() {
       },
     });
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Account created. Check your email if confirmation is required.");
   }
 

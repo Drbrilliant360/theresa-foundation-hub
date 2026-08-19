@@ -12,7 +12,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useCampaigns } from "@/hooks/useData";
 import { formatTZS, PAYMENT_METHODS } from "@/lib/format";
 
-type DonateSearch = { campaign?: string };
+type DonateSearch = { campaign?: string | undefined };
 
 const PRESETS = [10000, 25000, 50000, 100000];
 

@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as TshirtsRouteImport } from './routes/tshirts'
 import { Route as CampaignsIndexRouteImport } from './routes/campaigns.index'
@@ -36,6 +37,11 @@ const AuthRoute = AuthRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpactRoute = ImpactRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/contact'
+    | '/donate'
     | '/impact'
     | '/tshirts'
     | '/campaigns/$slug'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/contact'
+    | '/donate'
     | '/impact'
     | '/tshirts'
     | '/campaigns/$slug'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/auth'
     | '/contact'
+    | '/donate'
     | '/impact'
     | '/tshirts'
     | '/campaigns/$slug'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
   ImpactRoute: typeof ImpactRoute
   TshirtsRoute: typeof TshirtsRoute
   CampaignsSlugRoute: typeof CampaignsSlugRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
   ImpactRoute: ImpactRoute,
   TshirtsRoute: TshirtsRoute,
   CampaignsSlugRoute: CampaignsSlugRoute,
