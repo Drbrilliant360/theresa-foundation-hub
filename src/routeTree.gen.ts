@@ -10,18 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as TshirtsRouteImport } from './routes/tshirts'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as CampaignsIndexRouteImport } from './routes/campaigns.index'
 import { Route as CampaignsSlugRouteImport } from './routes/campaigns.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -54,6 +60,11 @@ const TshirtsRoute = TshirtsRouteImport.update({
   path: '/tshirts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const CampaignsIndexRoute = CampaignsIndexRouteImport.update({
   id: '/campaigns/',
   path: '/campaigns/',
@@ -73,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
 }
@@ -84,18 +96,21 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns': typeof CampaignsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
 }
@@ -109,6 +124,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/dashboard'
     | '/campaigns/$slug'
     | '/campaigns/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,23 +136,27 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/dashboard'
     | '/campaigns/$slug'
     | '/campaigns'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
     | '/auth'
     | '/contact'
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/_authenticated/dashboard'
     | '/campaigns/$slug'
     | '/campaigns/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
@@ -154,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -198,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TshirtsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/campaigns/': {
       id: '/campaigns/'
       path: '/campaigns'
@@ -215,8 +249,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
