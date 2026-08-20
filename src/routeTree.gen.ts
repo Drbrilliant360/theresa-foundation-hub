@@ -17,6 +17,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as TshirtsRouteImport } from './routes/tshirts'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as CampaignsIndexRouteImport } from './routes/campaigns.index'
 import { Route as CampaignsSlugRouteImport } from './routes/campaigns.$slug'
@@ -60,6 +61,11 @@ const TshirtsRoute = TshirtsRouteImport.update({
   path: '/tshirts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -84,6 +90,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns': typeof CampaignsIndexRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/impact': typeof ImpactRoute
   '/tshirts': typeof TshirtsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
@@ -124,6 +133,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/admin'
     | '/dashboard'
     | '/campaigns/$slug'
     | '/campaigns/'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/admin'
     | '/dashboard'
     | '/campaigns/$slug'
     | '/campaigns'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/donate'
     | '/impact'
     | '/tshirts'
+    | '/_authenticated/admin'
     | '/_authenticated/dashboard'
     | '/campaigns/$slug'
     | '/campaigns/'
@@ -225,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TshirtsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
       path: '/dashboard'
@@ -250,10 +269,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
 }
 
