@@ -23,9 +23,12 @@ import { Route as CampaignsIndexRouteImport } from './routes/campaigns.index'
 import { Route as CampaignsSlugRouteImport } from './routes/campaigns.$slug'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminCampaignsRouteImport } from './routes/_authenticated/admin.campaigns'
+import { Route as AuthenticatedAdminContentRouteImport } from './routes/_authenticated/admin.content'
 import { Route as AuthenticatedAdminDonationsRouteImport } from './routes/_authenticated/admin.donations'
 import { Route as AuthenticatedAdminMessagesRouteImport } from './routes/_authenticated/admin.messages'
 import { Route as AuthenticatedAdminOrdersRouteImport } from './routes/_authenticated/admin.orders'
+import { Route as AuthenticatedAdminTshirtsRouteImport } from './routes/_authenticated/admin.tshirts'
+import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -97,6 +100,12 @@ const AuthenticatedAdminCampaignsRoute =
     path: '/campaigns',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminContentRoute =
+  AuthenticatedAdminContentRouteImport.update({
+    id: '/content',
+    path: '/content',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminDonationsRoute =
   AuthenticatedAdminDonationsRouteImport.update({
     id: '/donations',
@@ -115,6 +124,17 @@ const AuthenticatedAdminOrdersRoute =
     path: '/orders',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminTshirtsRoute =
+  AuthenticatedAdminTshirtsRouteImport.update({
+    id: '/tshirts',
+    path: '/tshirts',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AuthenticatedAdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -129,9 +149,12 @@ export interface FileRoutesByFullPath {
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
   '/admin/campaigns': typeof AuthenticatedAdminCampaignsRoute
+  '/admin/content': typeof AuthenticatedAdminContentRoute
   '/admin/donations': typeof AuthenticatedAdminDonationsRoute
   '/admin/messages': typeof AuthenticatedAdminMessagesRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/admin/tshirts': typeof AuthenticatedAdminTshirtsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -146,9 +169,12 @@ export interface FileRoutesByTo {
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns': typeof CampaignsIndexRoute
   '/admin/campaigns': typeof AuthenticatedAdminCampaignsRoute
+  '/admin/content': typeof AuthenticatedAdminContentRoute
   '/admin/donations': typeof AuthenticatedAdminDonationsRoute
   '/admin/messages': typeof AuthenticatedAdminMessagesRoute
   '/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/admin/tshirts': typeof AuthenticatedAdminTshirtsRoute
+  '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRoutesById {
@@ -166,9 +192,12 @@ export interface FileRoutesById {
   '/campaigns/$slug': typeof CampaignsSlugRoute
   '/campaigns/': typeof CampaignsIndexRoute
   '/_authenticated/admin/campaigns': typeof AuthenticatedAdminCampaignsRoute
+  '/_authenticated/admin/content': typeof AuthenticatedAdminContentRoute
   '/_authenticated/admin/donations': typeof AuthenticatedAdminDonationsRoute
   '/_authenticated/admin/messages': typeof AuthenticatedAdminMessagesRoute
   '/_authenticated/admin/orders': typeof AuthenticatedAdminOrdersRoute
+  '/_authenticated/admin/tshirts': typeof AuthenticatedAdminTshirtsRoute
+  '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
 }
 export interface FileRouteTypes {
@@ -186,9 +215,12 @@ export interface FileRouteTypes {
     | '/campaigns/$slug'
     | '/campaigns/'
     | '/admin/campaigns'
+    | '/admin/content'
     | '/admin/donations'
     | '/admin/messages'
     | '/admin/orders'
+    | '/admin/tshirts'
+    | '/admin/users'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -203,9 +235,12 @@ export interface FileRouteTypes {
     | '/campaigns/$slug'
     | '/campaigns'
     | '/admin/campaigns'
+    | '/admin/content'
     | '/admin/donations'
     | '/admin/messages'
     | '/admin/orders'
+    | '/admin/tshirts'
+    | '/admin/users'
     | '/admin'
   id:
     | '__root__'
@@ -222,9 +257,12 @@ export interface FileRouteTypes {
     | '/campaigns/$slug'
     | '/campaigns/'
     | '/_authenticated/admin/campaigns'
+    | '/_authenticated/admin/content'
     | '/_authenticated/admin/donations'
     | '/_authenticated/admin/messages'
     | '/_authenticated/admin/orders'
+    | '/_authenticated/admin/tshirts'
+    | '/_authenticated/admin/users'
     | '/_authenticated/admin/'
   fileRoutesById: FileRoutesById
 }
@@ -341,6 +379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminCampaignsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/content': {
+      id: '/_authenticated/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AuthenticatedAdminContentRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/donations': {
       id: '/_authenticated/admin/donations'
       path: '/donations'
@@ -362,22 +407,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminOrdersRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/tshirts': {
+      id: '/_authenticated/admin/tshirts'
+      path: '/tshirts'
+      fullPath: '/admin/tshirts'
+      preLoaderRoute: typeof AuthenticatedAdminTshirtsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/users': {
+      id: '/_authenticated/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
   }
 }
 
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminCampaignsRoute: typeof AuthenticatedAdminCampaignsRoute
+  AuthenticatedAdminContentRoute: typeof AuthenticatedAdminContentRoute
   AuthenticatedAdminDonationsRoute: typeof AuthenticatedAdminDonationsRoute
   AuthenticatedAdminMessagesRoute: typeof AuthenticatedAdminMessagesRoute
   AuthenticatedAdminOrdersRoute: typeof AuthenticatedAdminOrdersRoute
+  AuthenticatedAdminTshirtsRoute: typeof AuthenticatedAdminTshirtsRoute
+  AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminCampaignsRoute: AuthenticatedAdminCampaignsRoute,
+  AuthenticatedAdminContentRoute: AuthenticatedAdminContentRoute,
   AuthenticatedAdminDonationsRoute: AuthenticatedAdminDonationsRoute,
   AuthenticatedAdminMessagesRoute: AuthenticatedAdminMessagesRoute,
   AuthenticatedAdminOrdersRoute: AuthenticatedAdminOrdersRoute,
+  AuthenticatedAdminTshirtsRoute: AuthenticatedAdminTshirtsRoute,
+  AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
