@@ -48,10 +48,14 @@ function AdminDonations() {
       .from("donations")
       .update({ status: value as (typeof STATUSES)[number] })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Donation updated");
     void invalidate("donations");
   };
+
 
   return (
     <>

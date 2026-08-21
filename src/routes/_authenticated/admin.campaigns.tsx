@@ -95,10 +95,14 @@ function AdminCampaigns() {
   const remove = async (id: string, title: string) => {
     if (!confirm(`Delete campaign "${title}"?`)) return;
     const { error } = await supabase.from("campaigns").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Campaign deleted");
     void invalidate("campaigns");
   };
+
 
   return (
     <>

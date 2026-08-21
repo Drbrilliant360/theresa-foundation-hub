@@ -27,10 +27,14 @@ function AdminOrders() {
       .from("tshirt_orders")
       .update({ status: value as (typeof ORDER_STEPS)[number] })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Order status updated");
     void invalidate("orders");
   };
+
 
   return (
     <>
