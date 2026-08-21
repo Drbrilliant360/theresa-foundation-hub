@@ -9,8 +9,17 @@ import { useAdminMessages, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatDate } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/messages")({
+  head: () => ({
+    meta: [
+      { title: "Messages — Admin — Theresa Foundation" },
+      { name: "description", content: "Enquiries submitted through the contact form." },
+      { property: "og:title", content: "Messages — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Enquiries submitted through the contact form." },
+    ],
+  }),
   component: AdminMessages,
 });
+
 
 function AdminMessages() {
   const { data: messages } = useAdminMessages();
@@ -19,10 +28,14 @@ function AdminMessages() {
   const remove = async (id: string) => {
     if (!confirm("Delete this message?")) return;
     const { error } = await supabase.from("contact_messages").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Message deleted");
     void invalidate("messages");
   };
+
 
   return (
     <>

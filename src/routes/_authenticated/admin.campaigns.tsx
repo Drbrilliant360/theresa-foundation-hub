@@ -28,8 +28,17 @@ import { useAdminCampaigns, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatTZS } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/campaigns")({
+  head: () => ({
+    meta: [
+      { title: "Campaigns — Admin — Theresa Foundation" },
+      { name: "description", content: "Manage fundraising campaigns for the Theresa Foundation." },
+      { property: "og:title", content: "Campaigns — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Manage fundraising campaigns for the Theresa Foundation." },
+    ],
+  }),
   component: AdminCampaigns,
 });
+
 
 type Draft = {
   id?: string;
@@ -95,10 +104,14 @@ function AdminCampaigns() {
   const remove = async (id: string, title: string) => {
     if (!confirm(`Delete campaign "${title}"?`)) return;
     const { error } = await supabase.from("campaigns").delete().eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Campaign deleted");
     void invalidate("campaigns");
   };
+
 
   return (
     <>

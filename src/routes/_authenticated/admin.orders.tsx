@@ -15,8 +15,17 @@ import { useAdminOrders, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatDate, ORDER_STEPS, ORDER_STEP_LABELS } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
+  head: () => ({
+    meta: [
+      { title: "Orders — Admin — Theresa Foundation" },
+      { name: "description", content: "Fulfil supporter t-shirt orders." },
+      { property: "og:title", content: "Orders — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Fulfil supporter t-shirt orders." },
+    ],
+  }),
   component: AdminOrders,
 });
+
 
 function AdminOrders() {
   const { data: orders } = useAdminOrders();
@@ -27,10 +36,14 @@ function AdminOrders() {
       .from("tshirt_orders")
       .update({ status: value as (typeof ORDER_STEPS)[number] })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Order status updated");
     void invalidate("orders");
   };
+
 
   return (
     <>

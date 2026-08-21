@@ -3,6 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { useIsAdmin } from "@/hooks/useAdmin";
+
 
 const links = [
   { to: "/", label: "Home" },
@@ -16,6 +18,8 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { user } = useAuth();
+  const { isAdmin } = useIsAdmin();
+
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
@@ -43,9 +47,16 @@ export function Navbar() {
 
         <div className="hidden items-center gap-2 lg:flex">
           {user ? (
-            <Button asChild variant="outline" size="sm">
-              <Link to="/dashboard">Dashboard</Link>
-            </Button>
+            <>
+              <Button asChild variant="outline" size="sm">
+                <Link to="/dashboard">Dashboard</Link>
+              </Button>
+              {isAdmin && (
+                <Button asChild variant="outline" size="sm">
+                  <Link to="/admin">Admin</Link>
+                </Button>
+              )}
+            </>
           ) : (
             <>
               <Button asChild variant="ghost" size="sm">
@@ -62,6 +73,7 @@ export function Navbar() {
             <Link to="/donate">Donate Now</Link>
           </Button>
         </div>
+
 
         <button
           className="lg:hidden"
@@ -87,11 +99,20 @@ export function Navbar() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               {user ? (
-                <Button asChild variant="outline">
-                  <Link to="/dashboard" onClick={() => setOpen(false)}>
-                    Dashboard
-                  </Link>
-                </Button>
+                <>
+                  <Button asChild variant="outline">
+                    <Link to="/dashboard" onClick={() => setOpen(false)}>
+                      Dashboard
+                    </Link>
+                  </Button>
+                  {isAdmin && (
+                    <Button asChild variant="outline">
+                      <Link to="/admin" onClick={() => setOpen(false)}>
+                        Admin
+                      </Link>
+                    </Button>
+                  )}
+                </>
               ) : (
                 <Button asChild variant="outline">
                   <Link to="/auth" onClick={() => setOpen(false)}>
@@ -105,6 +126,7 @@ export function Navbar() {
                 </Link>
               </Button>
             </div>
+
           </div>
         </div>
       )}

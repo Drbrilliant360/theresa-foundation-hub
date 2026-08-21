@@ -17,8 +17,17 @@ import { useAdminDonations, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatDate, formatTZS, paymentLabel } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/donations")({
+  head: () => ({
+    meta: [
+      { title: "Donations — Admin — Theresa Foundation" },
+      { name: "description", content: "Track and update donations for the Theresa Foundation." },
+      { property: "og:title", content: "Donations — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Track and update donations for the Theresa Foundation." },
+    ],
+  }),
   component: AdminDonations,
 });
+
 
 const STATUSES = ["pending", "completed", "failed", "refunded"] as const;
 
@@ -48,10 +57,14 @@ function AdminDonations() {
       .from("donations")
       .update({ status: value as (typeof STATUSES)[number] })
       .eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
     toast.success("Donation updated");
     void invalidate("donations");
   };
+
 
   return (
     <>

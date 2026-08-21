@@ -11,8 +11,17 @@ import { useAuth } from "@/hooks/useAuth";
 import { formatDate } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/users")({
+  head: () => ({
+    meta: [
+      { title: "Users — Admin — Theresa Foundation" },
+      { name: "description", content: "Manage donor accounts and administrator roles." },
+      { property: "og:title", content: "Users — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Manage donor accounts and administrator roles." },
+    ],
+  }),
   component: AdminUsers,
 });
+
 
 function AdminUsers() {
   const { data: profiles } = useAdminProfiles();
