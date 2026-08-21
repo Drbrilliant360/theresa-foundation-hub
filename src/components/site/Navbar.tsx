@@ -3,6 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
+import { useIsAdmin } from "@/hooks/useAdmin";
+
 
 const links = [
   { to: "/", label: "Home" },
