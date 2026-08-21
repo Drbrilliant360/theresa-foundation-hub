@@ -12,8 +12,17 @@ import {
 import { formatDate, formatTZS } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/")({
+  head: () => ({
+    meta: [
+      { title: "Admin Overview — Theresa Foundation" },
+      { name: "description", content: "Foundation performance and admin dashboard." },
+      { property: "og:title", content: "Admin Overview — Theresa Foundation" },
+      { property: "og:description", content: "Foundation performance and admin dashboard." },
+    ],
+  }),
   component: AdminOverview,
 });
+
 
 function AdminOverview() {
   const { data: campaigns } = useAdminCampaigns();

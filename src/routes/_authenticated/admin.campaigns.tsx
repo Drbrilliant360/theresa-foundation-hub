@@ -28,8 +28,17 @@ import { useAdminCampaigns, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatTZS } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/campaigns")({
+  head: () => ({
+    meta: [
+      { title: "Campaigns — Admin — Theresa Foundation" },
+      { name: "description", content: "Manage fundraising campaigns for the Theresa Foundation." },
+      { property: "og:title", content: "Campaigns — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Manage fundraising campaigns for the Theresa Foundation." },
+    ],
+  }),
   component: AdminCampaigns,
 });
+
 
 type Draft = {
   id?: string;

@@ -22,8 +22,17 @@ import { formatTZS, TSHIRT_SIZES, type TshirtSize } from "@/lib/format";
 import { imageFor } from "@/lib/images";
 
 export const Route = createFileRoute("/_authenticated/admin/tshirts")({
+  head: () => ({
+    meta: [
+      { title: "T-Shirts — Admin — Theresa Foundation" },
+      { name: "description", content: "Manage supporter t-shirt designs and inventory." },
+      { property: "og:title", content: "T-Shirts — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Manage supporter t-shirt designs and inventory." },
+    ],
+  }),
   component: AdminTshirts,
 });
+
 
 type Draft = {
   name: string;

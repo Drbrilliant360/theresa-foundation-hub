@@ -14,8 +14,17 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAdminFaqs, useAdminTestimonials, useInvalidateAdmin } from "@/hooks/useAdmin";
 
 export const Route = createFileRoute("/_authenticated/admin/content")({
+  head: () => ({
+    meta: [
+      { title: "Site Content — Admin — Theresa Foundation" },
+      { name: "description", content: "Manage testimonials and frequently asked questions." },
+      { property: "og:title", content: "Site Content — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Manage testimonials and frequently asked questions." },
+    ],
+  }),
   component: AdminContent,
 });
+
 
 function AdminContent() {
   const { data: testimonials } = useAdminTestimonials();

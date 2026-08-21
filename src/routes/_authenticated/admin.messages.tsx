@@ -9,8 +9,17 @@ import { useAdminMessages, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatDate } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/messages")({
+  head: () => ({
+    meta: [
+      { title: "Messages — Admin — Theresa Foundation" },
+      { name: "description", content: "Enquiries submitted through the contact form." },
+      { property: "og:title", content: "Messages — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Enquiries submitted through the contact form." },
+    ],
+  }),
   component: AdminMessages,
 });
+
 
 function AdminMessages() {
   const { data: messages } = useAdminMessages();

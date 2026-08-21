@@ -15,8 +15,17 @@ import { useAdminOrders, useInvalidateAdmin } from "@/hooks/useAdmin";
 import { formatDate, ORDER_STEPS, ORDER_STEP_LABELS } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/admin/orders")({
+  head: () => ({
+    meta: [
+      { title: "Orders — Admin — Theresa Foundation" },
+      { name: "description", content: "Fulfil supporter t-shirt orders." },
+      { property: "og:title", content: "Orders — Admin — Theresa Foundation" },
+      { property: "og:description", content: "Fulfil supporter t-shirt orders." },
+    ],
+  }),
   component: AdminOrders,
 });
+
 
 function AdminOrders() {
   const { data: orders } = useAdminOrders();
