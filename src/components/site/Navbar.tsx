@@ -99,11 +99,20 @@ export function Navbar() {
             ))}
             <div className="mt-3 flex flex-col gap-2">
               {user ? (
-                <Button asChild variant="outline">
-                  <Link to="/dashboard" onClick={() => setOpen(false)}>
-                    Dashboard
-                  </Link>
-                </Button>
+                <>
+                  <Button asChild variant="outline">
+                    <Link to="/dashboard" onClick={() => setOpen(false)}>
+                      Dashboard
+                    </Link>
+                  </Button>
+                  {isAdmin && (
+                    <Button asChild variant="outline">
+                      <Link to="/admin" onClick={() => setOpen(false)}>
+                        Admin
+                      </Link>
+                    </Button>
+                  )}
+                </>
               ) : (
                 <Button asChild variant="outline">
                   <Link to="/auth" onClick={() => setOpen(false)}>
@@ -117,6 +126,7 @@ export function Navbar() {
                 </Link>
               </Button>
             </div>
+
           </div>
         </div>
       )}
