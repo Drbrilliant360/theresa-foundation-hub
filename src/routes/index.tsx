@@ -184,10 +184,10 @@ function Index() {
       </section>
 
       {/* Allocation */}
-      <section className="py-20">
-        <div className="container-page grid gap-12 lg:grid-cols-2">
+      <section className="py-12 sm:py-20">
+        <div className="container-page grid gap-8 sm:gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold">How donations help</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">How donations help</h2>
             <p className="mt-3 text-muted-foreground">
               We publish exactly how every contribution is allocated across our programmes.
             </p>
@@ -212,9 +212,9 @@ function Index() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 sm:py-20">
         <div className="container-page">
-          <h2 className="text-3xl font-bold">Voices from our community</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Voices from our community</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {(testimonials ?? []).slice(0, 3).map((t) => (
               <Card key={t.id} className="gap-4 p-6">
@@ -231,9 +231,9 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="container-page max-w-3xl">
-          <h2 className="text-3xl font-bold">Frequently asked questions</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
           <Accordion type="single" collapsible className="mt-8">
             {(faqs ?? []).map((f) => (
               <AccordionItem key={f.id} value={f.id}>
@@ -247,8 +247,8 @@ function Index() {
 
       {/* CTA */}
       <section className="container-page">
-        <div className="rounded-3xl bg-primary px-8 py-14 text-center text-primary-foreground">
-          <h2 className="text-3xl font-bold">Your gift changes a life today</h2>
+        <div className="rounded-3xl bg-primary px-5 py-10 text-center text-primary-foreground sm:px-8 sm:py-14">
+          <h2 className="text-2xl font-bold sm:text-3xl">Your gift changes a life today</h2>
           <p className="mx-auto mt-3 max-w-xl opacity-85">
             Give once or monthly — and receive a limited-edition Theresa Foundation t-shirt
             with qualifying donations.
