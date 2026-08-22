@@ -84,7 +84,38 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
         <div className="container-page grid items-center gap-10 py-12 sm:py-20 lg:grid-cols-2">
-...
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-1 text-xs font-medium">
+              <Sparkles className="size-3.5" /> Serving Tanzanian communities since 2012
+            </span>
+            <h1 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
+              Together We Can Change Lives
+            </h1>
+            <p className="mt-4 max-w-lg text-base opacity-85">
+              Every donation funds education, healthcare and clean water for families who
+              need it most — and every shilling is tracked, transparently.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button
+                asChild
+                size="lg"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+              >
+                <Link to="/donate">
+                  Donate Now <ArrowRight className="ml-1 size-4" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10"
+              >
+                <Link to="/campaigns">Explore campaigns</Link>
+              </Button>
+            </div>
+          </div>
+
           <div className="relative">
             <img
               src={heroImage}
