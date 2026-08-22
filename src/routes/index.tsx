@@ -83,46 +83,15 @@ function Index() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="container-page grid items-center gap-10 py-20 lg:grid-cols-2">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-1 text-xs font-medium">
-              <Sparkles className="size-3.5" /> Serving Tanzanian communities since 2012
-            </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl">
-              Together We Can Change Lives
-            </h1>
-            <p className="mt-4 max-w-lg text-base opacity-85">
-              Every donation funds education, healthcare and clean water for families who
-              need it most — and every shilling is tracked, transparently.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button
-                asChild
-                size="lg"
-                className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
-              >
-                <Link to="/donate">
-                  Donate Now <ArrowRight className="ml-1 size-4" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/30 bg-transparent hover:bg-primary-foreground/10"
-              >
-                <Link to="/campaigns">Explore campaigns</Link>
-              </Button>
-            </div>
-          </div>
-
+        <div className="container-page grid items-center gap-10 py-12 sm:py-20 lg:grid-cols-2">
+...
           <div className="relative">
             <img
               src={heroImage}
               alt="Children supported by Theresa Foundation programmes in Tanzania"
-              className="h-80 w-full rounded-3xl object-cover shadow-[var(--shadow-lift)] lg:h-[26rem]"
+              className="h-60 w-full rounded-3xl object-cover shadow-[var(--shadow-lift)] sm:h-80 lg:h-[26rem]"
             />
-            <Card className="absolute -bottom-6 left-4 w-56 gap-1 p-5 shadow-[var(--shadow-lift)]">
+            <Card className="mt-4 w-full gap-1 p-5 shadow-[var(--shadow-lift)] sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:w-56">
               <span className="text-xs text-muted-foreground">Total raised</span>
               <span className="font-display text-2xl font-bold text-secondary">
                 {formatTZS(stats?.raised ?? 0)}
@@ -136,7 +105,7 @@ function Index() {
       </section>
 
       {/* Impact counters */}
-      <section className="bg-surface py-16">
+      <section className="bg-surface py-10 sm:py-16">
         <div className="container-page grid grid-cols-2 gap-6 lg:grid-cols-5">
           {[
             { label: "TZS raised", value: stats?.raised ?? 0 },
