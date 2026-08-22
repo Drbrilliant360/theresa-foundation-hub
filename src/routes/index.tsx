@@ -127,19 +127,19 @@ function Index() {
       </section>
 
       {/* About preview */}
-      <section className="py-20">
-        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
+      <section className="py-12 sm:py-20">
+        <div className="container-page grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
           <img
             src={aboutImage}
             alt="Foundation volunteers working with a local community"
             loading="lazy"
-            className="h-80 w-full rounded-3xl object-cover"
+            className="h-60 w-full rounded-3xl object-cover sm:h-80"
           />
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
               Who we are
             </span>
-            <h2 className="mt-2 text-3xl font-bold">Local roots, lasting change</h2>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Local roots, lasting change</h2>
             <p className="mt-4 text-muted-foreground">
               The Theresa Foundation partners with schools, clinics and village committees
               across Tanzania to deliver programmes designed by the people they serve.
@@ -162,16 +162,16 @@ function Index() {
       </section>
 
       {/* Campaigns */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 sm:py-20">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
+            <div className="min-w-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
                 Campaigns
               </span>
-              <h2 className="mt-2 text-3xl font-bold">Where your donation goes</h2>
+              <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Where your donation goes</h2>
             </div>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="shrink-0">
               <Link to="/campaigns">View all campaigns</Link>
             </Button>
           </div>
