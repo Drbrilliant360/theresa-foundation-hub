@@ -66,11 +66,11 @@ function AdminOverview() {
               <div key={d.id} className="flex items-center justify-between gap-3 border-b border-border pb-3 last:border-0">
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium">{d.donor_name}</p>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="truncate text-xs text-muted-foreground">
                     {d.reference} · {formatDate(d.created_at)}
                   </p>
                 </div>
-                <div className="text-right">
+                <div className="shrink-0 text-right">
                   <p className="text-sm font-semibold">{formatTZS(d.amount)}</p>
                   <Badge variant={d.status === "completed" ? "default" : "secondary"} className="mt-1 text-[10px]">
                     {d.status}
@@ -89,9 +89,9 @@ function AdminOverview() {
               const pct = Number(c.goal_amount) ? Math.min(100, Math.round((Number(c.raised_amount) / Number(c.goal_amount)) * 100)) : 0;
               return (
                 <div key={c.id}>
-                  <div className="flex justify-between text-sm">
-                    <span className="truncate font-medium">{c.title}</span>
-                    <span className="text-muted-foreground">{pct}%</span>
+                  <div className="flex justify-between gap-2 text-sm">
+                    <span className="min-w-0 truncate font-medium">{c.title}</span>
+                    <span className="shrink-0 text-muted-foreground">{pct}%</span>
                   </div>
                   <div className="mt-1 h-2 rounded-full bg-muted">
                     <div className="h-2 rounded-full bg-secondary" style={{ width: `${pct}%` }} />
