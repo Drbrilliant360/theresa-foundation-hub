@@ -70,7 +70,7 @@ function CampaignDetail() {
           <Badge className="mt-6 bg-accent capitalize text-accent-foreground">
             {campaign.category}
           </Badge>
-          <h1 className="mt-3 text-3xl font-bold">{campaign.title}</h1>
+          <h1 className="mt-3 text-2xl font-bold sm:text-3xl">{campaign.title}</h1>
           <p className="mt-3 text-muted-foreground">{campaign.summary}</p>
           <div className="mt-6 whitespace-pre-line text-sm leading-relaxed text-foreground/90">
             {campaign.description}

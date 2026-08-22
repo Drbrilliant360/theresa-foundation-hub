@@ -65,7 +65,7 @@ function About() {
 
       <section className="bg-surface py-16">
         <div className="container-page">
-          <h2 className="text-3xl font-bold">Our journey</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Our journey</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
             {milestones.map((m) => (
               <Card key={m.year} className="gap-2 p-6">

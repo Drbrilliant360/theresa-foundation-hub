@@ -42,7 +42,7 @@ function Impact() {
         description="We report on outcomes, not just activity — here is what your support has achieved."
       />
 
-      <section className="container-page grid grid-cols-2 gap-6 py-14 lg:grid-cols-4">
+      <section className="container-page grid grid-cols-2 gap-6 py-10 sm:py-14 lg:grid-cols-4">
         <Card className="gap-1 p-6">
           <span className="font-display text-2xl font-bold text-primary">
             {formatTZS(stats?.raised ?? 0)}
@@ -71,7 +71,7 @@ function Impact() {
 
       <section className="bg-surface py-16">
         <div className="container-page">
-          <h2 className="text-3xl font-bold">Programme outcomes</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Programme outcomes</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-4">
             {outcomes.map((o) => (
               <Card key={o.title} className="gap-1 p-6">
@@ -85,7 +85,7 @@ function Impact() {
       </section>
 
       <section className="container-page py-16">
-        <h2 className="text-3xl font-bold">Stories from the field</h2>
+        <h2 className="text-2xl font-bold sm:text-3xl">Stories from the field</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {(testimonials ?? []).map((t) => (
             <Card key={t.id} className="gap-3 p-6">
