@@ -59,7 +59,7 @@ function Contact() {
         description="Questions about a donation, a partnership or volunteering? We reply within two working days."
       />
 
-      <section className="container-page grid gap-10 py-14 lg:grid-cols-3">
+      <section className="container-page grid gap-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-3">
         <Card className="gap-4 p-6 lg:col-span-1">
           <div className="flex gap-3 text-sm">
             <MapPin className="size-4 shrink-0 text-secondary" />

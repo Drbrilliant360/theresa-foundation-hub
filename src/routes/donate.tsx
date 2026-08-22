@@ -80,8 +80,8 @@ function DonatePage() {
   if (reference) {
     return (
       <SiteLayout>
-        <section className="container-page flex justify-center py-20">
-          <Card className="w-full max-w-lg p-10 text-center">
+        <section className="container-page flex justify-center py-12 sm:py-20">
+          <Card className="w-full max-w-lg p-6 text-center sm:p-10">
             <CheckCircle2 className="mx-auto size-14 text-secondary" />
             <h1 className="mt-4 text-2xl font-bold">Donation successful</h1>
             <p className="mt-2 text-muted-foreground">
@@ -104,8 +104,8 @@ function DonatePage() {
         title="Make a donation"
         description="Every contribution funds education, healthcare and community programs in Tanzania."
       />
-      <section className="container-page py-12">
-        <Card className="mx-auto max-w-2xl p-8">
+      <section className="container-page py-10 sm:py-12">
+        <Card className="mx-auto max-w-2xl p-5 sm:p-8">
           <form className="space-y-6" onSubmit={submit}>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">

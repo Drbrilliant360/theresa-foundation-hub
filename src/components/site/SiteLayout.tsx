@@ -22,16 +22,16 @@ export function PageHeader({
   description?: string;
 }) {
   return (
-    <section className="bg-surface py-14">
+    <section className="bg-surface py-10 sm:py-14">
       <div className="container-page">
         {eyebrow && (
           <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
             {eyebrow}
           </span>
         )}
-        <h1 className="mt-2 text-4xl font-bold text-foreground">{title}</h1>
+        <h1 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl">{title}</h1>
         {description && (
-          <p className="mt-3 max-w-2xl text-muted-foreground">{description}</p>
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">{description}</p>
         )}
       </div>
     </section>

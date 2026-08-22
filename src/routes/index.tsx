@@ -83,12 +83,12 @@ function Index() {
     <SiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="container-page grid items-center gap-10 py-20 lg:grid-cols-2">
+        <div className="container-page grid items-center gap-10 py-12 sm:py-20 lg:grid-cols-2">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-3 py-1 text-xs font-medium">
               <Sparkles className="size-3.5" /> Serving Tanzanian communities since 2012
             </span>
-            <h1 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl">
+            <h1 className="mt-5 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
               Together We Can Change Lives
             </h1>
             <p className="mt-4 max-w-lg text-base opacity-85">
@@ -120,9 +120,9 @@ function Index() {
             <img
               src={heroImage}
               alt="Children supported by Theresa Foundation programmes in Tanzania"
-              className="h-80 w-full rounded-3xl object-cover shadow-[var(--shadow-lift)] lg:h-[26rem]"
+              className="h-60 w-full rounded-3xl object-cover shadow-[var(--shadow-lift)] sm:h-80 lg:h-[26rem]"
             />
-            <Card className="absolute -bottom-6 left-4 w-56 gap-1 p-5 shadow-[var(--shadow-lift)]">
+            <Card className="mt-4 w-full gap-1 p-5 shadow-[var(--shadow-lift)] sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:w-56">
               <span className="text-xs text-muted-foreground">Total raised</span>
               <span className="font-display text-2xl font-bold text-secondary">
                 {formatTZS(stats?.raised ?? 0)}
@@ -136,7 +136,7 @@ function Index() {
       </section>
 
       {/* Impact counters */}
-      <section className="bg-surface py-16">
+      <section className="bg-surface py-10 sm:py-16">
         <div className="container-page grid grid-cols-2 gap-6 lg:grid-cols-5">
           {[
             { label: "TZS raised", value: stats?.raised ?? 0 },
@@ -158,19 +158,19 @@ function Index() {
       </section>
 
       {/* About preview */}
-      <section className="py-20">
-        <div className="container-page grid items-center gap-12 lg:grid-cols-2">
+      <section className="py-12 sm:py-20">
+        <div className="container-page grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
           <img
             src={aboutImage}
             alt="Foundation volunteers working with a local community"
             loading="lazy"
-            className="h-80 w-full rounded-3xl object-cover"
+            className="h-60 w-full rounded-3xl object-cover sm:h-80"
           />
           <div>
             <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
               Who we are
             </span>
-            <h2 className="mt-2 text-3xl font-bold">Local roots, lasting change</h2>
+            <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Local roots, lasting change</h2>
             <p className="mt-4 text-muted-foreground">
               The Theresa Foundation partners with schools, clinics and village committees
               across Tanzania to deliver programmes designed by the people they serve.
@@ -193,16 +193,16 @@ function Index() {
       </section>
 
       {/* Campaigns */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 sm:py-20">
         <div className="container-page">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
+            <div className="min-w-0">
               <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
                 Campaigns
               </span>
-              <h2 className="mt-2 text-3xl font-bold">Where your donation goes</h2>
+              <h2 className="mt-2 text-2xl font-bold sm:text-3xl">Where your donation goes</h2>
             </div>
-            <Button asChild variant="outline">
+            <Button asChild variant="outline" className="shrink-0">
               <Link to="/campaigns">View all campaigns</Link>
             </Button>
           </div>
@@ -215,10 +215,10 @@ function Index() {
       </section>
 
       {/* Allocation */}
-      <section className="py-20">
-        <div className="container-page grid gap-12 lg:grid-cols-2">
+      <section className="py-12 sm:py-20">
+        <div className="container-page grid gap-8 sm:gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold">How donations help</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">How donations help</h2>
             <p className="mt-3 text-muted-foreground">
               We publish exactly how every contribution is allocated across our programmes.
             </p>
@@ -243,9 +243,9 @@ function Index() {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-12 sm:py-20">
         <div className="container-page">
-          <h2 className="text-3xl font-bold">Voices from our community</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Voices from our community</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {(testimonials ?? []).slice(0, 3).map((t) => (
               <Card key={t.id} className="gap-4 p-6">
@@ -262,9 +262,9 @@ function Index() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-12 sm:py-20">
         <div className="container-page max-w-3xl">
-          <h2 className="text-3xl font-bold">Frequently asked questions</h2>
+          <h2 className="text-2xl font-bold sm:text-3xl">Frequently asked questions</h2>
           <Accordion type="single" collapsible className="mt-8">
             {(faqs ?? []).map((f) => (
               <AccordionItem key={f.id} value={f.id}>
@@ -278,8 +278,8 @@ function Index() {
 
       {/* CTA */}
       <section className="container-page">
-        <div className="rounded-3xl bg-primary px-8 py-14 text-center text-primary-foreground">
-          <h2 className="text-3xl font-bold">Your gift changes a life today</h2>
+        <div className="rounded-3xl bg-primary px-5 py-10 text-center text-primary-foreground sm:px-8 sm:py-14">
+          <h2 className="text-2xl font-bold sm:text-3xl">Your gift changes a life today</h2>
           <p className="mx-auto mt-3 max-w-xl opacity-85">
             Give once or monthly — and receive a limited-edition Theresa Foundation t-shirt
             with qualifying donations.
