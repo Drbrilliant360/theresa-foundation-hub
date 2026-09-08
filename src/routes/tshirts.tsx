@@ -55,12 +55,19 @@ function Tshirts() {
                     <Badge variant="secondary">{formatTZS(t.min_donation_amount)}+</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">{t.description}</p>
-                  <Button
-                    asChild
-                    className="w-full bg-secondary text-secondary-foreground hover:bg-secondary/90"
-                  >
-                    <Link to="/donate">Donate to claim</Link>
-                  </Button>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    <Button asChild variant="outline">
+                      <Link to="/donate">Donate</Link>
+                    </Button>
+                    <Button
+                      asChild
+                      className="bg-secondary text-secondary-foreground hover:bg-secondary/90"
+                    >
+                      <Link to="/checkout" search={{ design: t.id }}>
+                        Claim shirt
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </Card>
             ))}
