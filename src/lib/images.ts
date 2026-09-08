@@ -6,12 +6,16 @@ import women from "@/assets/campaign-women.jpg";
 import child from "@/assets/campaign-child.jpg";
 import healthcare from "@/assets/campaign-healthcare.jpg";
 import emergency from "@/assets/campaign-emergency.jpg";
-import tshirtHope from "@/assets/tshirt-hope.jpg";
-import tshirtImpact from "@/assets/tshirt-impact.jpg";
-import tshirtTogether from "@/assets/tshirt-together.jpg";
+import tshirtWhiteAsset from "@/assets/tshirt-white.jpg.asset.json";
+import tshirtBlueAsset from "@/assets/tshirt-blue.jpg.asset.json";
+import hoodieNavyAsset from "@/assets/hoodie-navy.jpg.asset.json";
 
 export const heroImage = hero;
 export const aboutImage = about;
+
+export const tshirtWhite = tshirtWhiteAsset.url;
+export const tshirtBlue = tshirtBlueAsset.url;
+export const hoodieNavy = hoodieNavyAsset.url;
 
 const imageMap: Record<string, string> = {
   education,
@@ -20,9 +24,12 @@ const imageMap: Record<string, string> = {
   child,
   healthcare,
   emergency,
-  "tshirt-hope": tshirtHope,
-  "tshirt-impact": tshirtImpact,
-  "tshirt-together": tshirtTogether,
+  "tshirt-hope": tshirtWhite,
+  "tshirt-impact": tshirtBlue,
+  "tshirt-together": hoodieNavy,
+  "tshirt-white": tshirtWhite,
+  "tshirt-blue": tshirtBlue,
+  "hoodie-navy": hoodieNavy,
 };
 
 export function imageFor(key: string | null | undefined): string {
