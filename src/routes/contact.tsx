@@ -57,6 +57,7 @@ function Contact() {
         eyebrow="Contact"
         title="Talk to our team"
         description="Questions about a donation, a partnership or volunteering? We reply within two working days."
+        background={aboutImage}
       />
 
       <section className="container-page grid gap-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-3">

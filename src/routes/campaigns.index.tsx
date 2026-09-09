@@ -48,6 +48,7 @@ function Campaigns() {
         eyebrow="Campaigns"
         title="Choose a cause to support"
         description="Every campaign shows live progress toward its goal, so you always know where your donation lands."
+        background={heroImage}
       />
 
       <section className="container-page py-12">

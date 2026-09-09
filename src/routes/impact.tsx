@@ -40,6 +40,7 @@ function Impact() {
         eyebrow="Impact"
         title="Results you can measure"
         description="We report on outcomes, not just activity — here is what your support has achieved."
+        background={careHandsImage}
       />
 
       <section className="container-page grid grid-cols-2 gap-6 py-10 sm:py-14 lg:grid-cols-4">

@@ -36,6 +36,7 @@ function Tshirts() {
         eyebrow="T-Shirts"
         title="Wear the change you fund"
         description="Donate above a design's threshold and we'll reserve a supporter t-shirt in your size."
+        background={savannaImage}
       />
 
       <section className="container-page grid gap-6 py-10 sm:grid-cols-2 sm:py-14 lg:grid-cols-3">

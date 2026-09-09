@@ -103,6 +103,7 @@ function DonatePage() {
         eyebrow="Give today"
         title="Make a donation"
         description="Every contribution funds education, healthcare and community programs in Tanzania."
+        background={makeChangeImage}
       />
       <section className="container-page py-10 sm:py-12">
         <Card className="mx-auto max-w-2xl p-5 sm:p-8">
