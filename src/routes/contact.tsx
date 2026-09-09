@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
+import { aboutImage } from "@/lib/images";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -57,6 +58,7 @@ function Contact() {
         eyebrow="Contact"
         title="Talk to our team"
         description="Questions about a donation, a partnership or volunteering? We reply within two working days."
+        background={aboutImage}
       />
 
       <section className="container-page grid gap-8 py-10 sm:gap-10 sm:py-14 lg:grid-cols-3">

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeartHandshake, Target, Eye, ShieldCheck } from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { Card } from "@/components/ui/card";
-import { aboutImage } from "@/lib/images";
+import { aboutImage, givingHandsImage } from "@/lib/images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -37,6 +37,7 @@ function About() {
         eyebrow="About us"
         title="Community-led change across Tanzania"
         description="We work alongside local leaders, teachers and health workers so that every programme is designed by the people it serves."
+        background={givingHandsImage}
       />
 
       <section className="container-page grid items-center gap-12 py-16 lg:grid-cols-2">

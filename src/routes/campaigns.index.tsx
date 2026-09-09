@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCampaigns } from "@/hooks/useData";
+import { heroImage } from "@/lib/images";
 
 export const Route = createFileRoute("/campaigns/")({
   head: () => ({
@@ -48,6 +49,7 @@ function Campaigns() {
         eyebrow="Campaigns"
         title="Choose a cause to support"
         description="Every campaign shows live progress toward its goal, so you always know where your donation lands."
+        background={heroImage}
       />
 
       <section className="container-page py-12">

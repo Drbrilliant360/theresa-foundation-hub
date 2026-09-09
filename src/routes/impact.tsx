@@ -3,6 +3,7 @@ import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { Card } from "@/components/ui/card";
 import { formatTZS } from "@/lib/format";
 import { useImpactStats, useTestimonials } from "@/hooks/useData";
+import { careHandsImage } from "@/lib/images";
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -40,6 +41,7 @@ function Impact() {
         eyebrow="Impact"
         title="Results you can measure"
         description="We report on outcomes, not just activity — here is what your support has achieved."
+        background={careHandsImage}
       />
 
       <section className="container-page grid grid-cols-2 gap-6 py-10 sm:py-14 lg:grid-cols-4">
