@@ -18,7 +18,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { heroImage, aboutImage } from "@/lib/images";
+import { heroImage, aboutImage, savannaImage } from "@/lib/images";
 import { formatTZS, formatCompact } from "@/lib/format";
 import { useCampaigns, useFaqs, useImpactStats, useTestimonials } from "@/hooks/useData";
 
@@ -278,19 +278,29 @@ function Index() {
 
       {/* CTA */}
       <section className="container-page">
-        <div className="rounded-3xl bg-primary px-5 py-10 text-center text-primary-foreground sm:px-8 sm:py-14">
-          <h2 className="text-2xl font-bold sm:text-3xl">Your gift changes a life today</h2>
-          <p className="mx-auto mt-3 max-w-xl opacity-85">
-            Give once or monthly — and receive a limited-edition Theresa Foundation t-shirt
-            with qualifying donations.
-          </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-8 bg-secondary text-secondary-foreground hover:bg-secondary/90"
-          >
-            <Link to="/donate">Donate Now</Link>
-          </Button>
+        <div className="relative overflow-hidden rounded-3xl bg-primary px-5 py-10 text-center text-primary-foreground sm:px-8 sm:py-14">
+          <img
+            src={savannaImage}
+            alt=""
+            aria-hidden
+            loading="lazy"
+            className="absolute inset-0 size-full object-cover"
+          />
+          <div className="absolute inset-0 bg-primary/85" />
+          <div className="relative">
+            <h2 className="text-2xl font-bold sm:text-3xl">Your gift changes a life today</h2>
+            <p className="mx-auto mt-3 max-w-xl opacity-85">
+              Give once or monthly — and receive a limited-edition Theresa Foundation t-shirt
+              with qualifying donations.
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="mt-8 bg-secondary text-secondary-foreground hover:bg-secondary/90"
+            >
+              <Link to="/donate">Donate Now</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </SiteLayout>
