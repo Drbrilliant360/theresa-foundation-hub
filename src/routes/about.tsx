@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeartHandshake, Target, Eye, ShieldCheck } from "lucide-react";
 import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { Card } from "@/components/ui/card";
-import { aboutImage } from "@/lib/images";
+import { aboutImage, givingHandsImage } from "@/lib/images";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

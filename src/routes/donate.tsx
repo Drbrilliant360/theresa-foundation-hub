@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useCampaigns } from "@/hooks/useData";
 import { formatTZS, PAYMENT_METHODS } from "@/lib/format";
+import { makeChangeImage } from "@/lib/images";
 
 type DonateSearch = { campaign?: string | undefined };
 

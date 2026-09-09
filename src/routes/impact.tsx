@@ -3,6 +3,7 @@ import { SiteLayout, PageHeader } from "@/components/site/SiteLayout";
 import { Card } from "@/components/ui/card";
 import { formatTZS } from "@/lib/format";
 import { useImpactStats, useTestimonials } from "@/hooks/useData";
+import { careHandsImage } from "@/lib/images";
 
 export const Route = createFileRoute("/impact")({
   head: () => ({

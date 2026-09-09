@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { imageFor } from "@/lib/images";
+import { imageFor, savannaImage } from "@/lib/images";
 import { formatTZS } from "@/lib/format";
 import { useTemplates } from "@/hooks/useData";
 

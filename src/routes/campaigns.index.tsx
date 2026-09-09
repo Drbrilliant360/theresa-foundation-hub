@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useCampaigns } from "@/hooks/useData";
+import { heroImage } from "@/lib/images";
 
 export const Route = createFileRoute("/campaigns/")({
   head: () => ({
