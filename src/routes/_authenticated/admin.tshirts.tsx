@@ -35,6 +35,7 @@ export const Route = createFileRoute("/_authenticated/admin/tshirts")({
 
 
 type Draft = {
+  id?: string;
   name: string;
   description: string;
   image_key: string;
@@ -44,9 +45,15 @@ type Draft = {
 const emptyDraft: Draft = {
   name: "",
   description: "",
-  image_key: "tshirt-hope",
+  image_key: "tshirt-white",
   min_donation_amount: "25000",
 };
+
+const DESIGN_IMAGES = [
+  { key: "tshirt-white", label: "Heritage White Tee" },
+  { key: "tshirt-blue", label: "Royal Blue Tee" },
+  { key: "hoodie-navy", label: "Navy Heritage Hoodie" },
+];
 
 function AdminTshirts() {
   const { data: templates } = useAdminTemplates();
