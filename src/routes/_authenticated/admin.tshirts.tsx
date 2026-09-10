@@ -35,6 +35,7 @@ export const Route = createFileRoute("/_authenticated/admin/tshirts")({
 
 
 type Draft = {
+  id?: string;
   name: string;
   description: string;
   image_key: string;
@@ -44,9 +45,15 @@ type Draft = {
 const emptyDraft: Draft = {
   name: "",
   description: "",
-  image_key: "tshirt-hope",
+  image_key: "tshirt-white",
   min_donation_amount: "25000",
 };
+
+const DESIGN_IMAGES = [
+  { key: "tshirt-white", label: "Heritage White Tee" },
+  { key: "tshirt-blue", label: "Royal Blue Tee" },
+  { key: "hoodie-navy", label: "Navy Heritage Hoodie" },
+];
 
 function AdminTshirts() {
   const { data: templates } = useAdminTemplates();
@@ -54,21 +61,28 @@ function AdminTshirts() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [saving, setSaving] = useState(false);
 
-  const createTemplate = async () => {
+  const saveTemplate = async () => {
     if (!draft) return;
+    if (!draft.name.trim()) {
+      toast.error("Please add a design name");
+      return;
+    }
     setSaving(true);
-    const { error } = await supabase.from("tshirt_templates").insert({
+    const payload = {
       name: draft.name,
       description: draft.description,
       image_key: draft.image_key,
       min_donation_amount: Number(draft.min_donation_amount || 0),
-    });
+    };
+    const { error } = draft.id
+      ? await supabase.from("tshirt_templates").update(payload).eq("id", draft.id)
+      : await supabase.from("tshirt_templates").insert(payload);
     setSaving(false);
     if (error) {
       toast.error(error.message);
       return;
     }
-    toast.success("Design created");
+    toast.success(draft.id ? "Design updated" : "Design created");
     setDraft(null);
     void invalidate("templates");
   };
@@ -142,14 +156,26 @@ function AdminTshirts() {
                 })}
               </div>
 
-              <Button
-                className="mt-4"
-                size="sm"
-                variant="outline"
-                onClick={() => void toggleActive(t.id, !t.active)}
-              >
-                {t.active ? "Hide design" : "Publish design"}
-              </Button>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() =>
+                    setDraft({
+                      id: t.id,
+                      name: t.name,
+                      description: t.description,
+                      image_key: t.image_key,
+                      min_donation_amount: String(t.min_donation_amount),
+                    })
+                  }
+                >
+                  Edit design
+                </Button>
+                <Button size="sm" variant="outline" onClick={() => void toggleActive(t.id, !t.active)}>
+                  {t.active ? "Hide design" : "Publish design"}
+                </Button>
+              </div>
             </div>
           </Card>
         ))}
@@ -161,7 +187,7 @@ function AdminTshirts() {
       <Dialog open={!!draft} onOpenChange={(o) => !o && setDraft(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>New t-shirt design</DialogTitle>
+            <DialogTitle>{draft?.id ? "Edit t-shirt design" : "New t-shirt design"}</DialogTitle>
           </DialogHeader>
           {draft && (
             <div className="space-y-4">
@@ -177,12 +203,30 @@ function AdminTshirts() {
                 <Label htmlFor="min">Minimum donation (TZS)</Label>
                 <Input id="min" type="number" value={draft.min_donation_amount} onChange={(e) => setDraft({ ...draft, min_donation_amount: e.target.value })} />
               </div>
+              <div>
+                <Label>Photo</Label>
+                <div className="mt-2 grid grid-cols-3 gap-2">
+                  {DESIGN_IMAGES.map((opt) => (
+                    <button
+                      key={opt.key}
+                      type="button"
+                      onClick={() => setDraft({ ...draft, image_key: opt.key })}
+                      className={`overflow-hidden rounded-lg border-2 text-left transition ${
+                        draft.image_key === opt.key ? "border-primary" : "border-transparent"
+                      }`}
+                    >
+                      <img src={imageFor(opt.key)} alt={opt.label} className="h-20 w-full object-cover" />
+                      <span className="block p-1 text-[11px] text-muted-foreground">{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
           <DialogFooter>
             <Button variant="ghost" onClick={() => setDraft(null)}>Cancel</Button>
-            <Button disabled={saving} onClick={() => void createTemplate()}>
-              {saving ? "Saving…" : "Create"}
+            <Button disabled={saving} onClick={() => void saveTemplate()}>
+              {saving ? "Saving…" : draft?.id ? "Save" : "Create"}
             </Button>
           </DialogFooter>
         </DialogContent>
