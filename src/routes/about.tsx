@@ -27,7 +27,25 @@ const milestones = [
   { year: "2012", text: "Foundation established in Dar es Salaam with a single school project." },
   { year: "2016", text: "First mobile clinic launched, reaching 12 rural villages." },
   { year: "2020", text: "Clean water programme delivers 30 boreholes across Dodoma." },
-  { year: "2025", text: "Over 40,000 beneficiaries supported nationwide." },
+  { year: "2026", text: "Constitution adopted on 05 January 2026 as Karungi Foundation (KARFOU)." },
+];
+
+const facts = [
+  { label: "Registered name", value: "Karungi Foundation (KARFOU)" },
+  { label: "Status", value: "Non-governmental, non-profit organisation registered in Tanzania" },
+  { label: "Head office", value: "Igabiro–Bunyagongo, Nshamba, Muleba District, Kagera Region" },
+  { label: "Area of operation", value: "Muleba District, expanding to other districts and regions" },
+];
+
+const focusAreas = [
+  "Education support for vulnerable children",
+  "Health education, HIV/AIDS awareness and sanitation",
+  "Agriculture, food security and market access",
+  "Entrepreneurship and youth skills training",
+  "Women and youth economic empowerment",
+  "Environmental conservation and disaster response",
+  "Orphan care, shelter and nutrition",
+  "Human rights, legal aid and counselling",
 ];
 
 function About() {
