@@ -95,6 +95,31 @@ function About() {
           </div>
         </div>
       </section>
+
+      <section className="container-page grid gap-10 py-16 lg:grid-cols-2">
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">Who we are, officially</h2>
+          <dl className="mt-6 space-y-4">
+            {facts.map((f) => (
+              <div key={f.label} className="border-b pb-4">
+                <dt className="text-xs uppercase tracking-wide text-muted-foreground">{f.label}</dt>
+                <dd className="mt-1 text-sm font-medium">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">What we work on</h2>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {focusAreas.map((a) => (
+              <li key={a} className="flex gap-2 text-sm text-muted-foreground">
+                <HeartHandshake className="mt-0.5 size-4 shrink-0 text-secondary" />
+                {a}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
     </SiteLayout>
   );
 }
