@@ -69,7 +69,7 @@ function Contact() {
           </div>
           <div className="flex gap-3 text-sm">
             <Phone className="size-4 shrink-0 text-secondary" />
-            <span>+255 700 000 000</span>
+            <span>+255 759 815 234</span>
           </div>
           <div className="flex gap-3 text-sm">
             <Mail className="size-4 shrink-0 text-secondary" />
