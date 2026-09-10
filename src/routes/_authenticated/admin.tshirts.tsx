@@ -203,12 +203,30 @@ function AdminTshirts() {
                 <Label htmlFor="min">Minimum donation (TZS)</Label>
                 <Input id="min" type="number" value={draft.min_donation_amount} onChange={(e) => setDraft({ ...draft, min_donation_amount: e.target.value })} />
               </div>
+              <div>
+                <Label>Photo</Label>
+                <div className="mt-2 grid grid-cols-3 gap-2">
+                  {DESIGN_IMAGES.map((opt) => (
+                    <button
+                      key={opt.key}
+                      type="button"
+                      onClick={() => setDraft({ ...draft, image_key: opt.key })}
+                      className={`overflow-hidden rounded-lg border-2 text-left transition ${
+                        draft.image_key === opt.key ? "border-primary" : "border-transparent"
+                      }`}
+                    >
+                      <img src={imageFor(opt.key)} alt={opt.label} className="h-20 w-full object-cover" />
+                      <span className="block p-1 text-[11px] text-muted-foreground">{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           )}
           <DialogFooter>
             <Button variant="ghost" onClick={() => setDraft(null)}>Cancel</Button>
-            <Button disabled={saving} onClick={() => void createTemplate()}>
-              {saving ? "Saving…" : "Create"}
+            <Button disabled={saving} onClick={() => void saveTemplate()}>
+              {saving ? "Saving…" : draft?.id ? "Save" : "Create"}
             </Button>
           </DialogFooter>
         </DialogContent>
