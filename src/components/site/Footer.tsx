@@ -34,7 +34,7 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold uppercase tracking-wide opacity-90">Contact</h4>
           <ul className="mt-4 space-y-3 text-sm opacity-80">
-            <li className="flex gap-2"><MapPin className="size-4 shrink-0" /> Msasani, Dar es Salaam, Tanzania</li>
+            <li className="flex gap-2"><MapPin className="size-4 shrink-0" /> Igabiro–Bunyagongo, Nshamba, Muleba District, Kagera, Tanzania</li>
             <li className="flex gap-2"><Phone className="size-4 shrink-0" /> +255 700 000 000</li>
             <li className="flex gap-2"><Mail className="size-4 shrink-0" /> hello@theresafoundation.org</li>
           </ul>

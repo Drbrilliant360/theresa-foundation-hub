@@ -27,7 +27,25 @@ const milestones = [
   { year: "2012", text: "Foundation established in Dar es Salaam with a single school project." },
   { year: "2016", text: "First mobile clinic launched, reaching 12 rural villages." },
   { year: "2020", text: "Clean water programme delivers 30 boreholes across Dodoma." },
-  { year: "2025", text: "Over 40,000 beneficiaries supported nationwide." },
+  { year: "2026", text: "Constitution adopted on 05 January 2026 as Karungi Foundation (KARFOU)." },
+];
+
+const facts = [
+  { label: "Registered name", value: "Karungi Foundation (KARFOU)" },
+  { label: "Status", value: "Non-governmental, non-profit organisation registered in Tanzania" },
+  { label: "Head office", value: "Igabiro–Bunyagongo, Nshamba, Muleba District, Kagera Region" },
+  { label: "Area of operation", value: "Muleba District, expanding to other districts and regions" },
+];
+
+const focusAreas = [
+  "Education support for vulnerable children",
+  "Health education, HIV/AIDS awareness and sanitation",
+  "Agriculture, food security and market access",
+  "Entrepreneurship and youth skills training",
+  "Women and youth economic empowerment",
+  "Environmental conservation and disaster response",
+  "Orphan care, shelter and nutrition",
+  "Human rights, legal aid and counselling",
 ];
 
 function About() {
@@ -48,10 +66,10 @@ function About() {
         />
         <div className="space-y-6">
           {[
-            { icon: Target, title: "Our mission", text: "To unlock opportunity for children and families through education, health and sustainable livelihoods." },
-            { icon: Eye, title: "Our vision", text: "A Tanzania where no child's future is limited by where they were born." },
-            { icon: ShieldCheck, title: "Our promise", text: "Every donation is tracked and reported. 85% of funds go directly to programmes." },
-            { icon: HeartHandshake, title: "Our approach", text: "Partnership first — communities set the priorities, we help resource them." },
+            { icon: Target, title: "Our mission", text: "To capacitate the Tanzanian community to fight poverty and ignorance through health, water and education support and local economic activities, in a sustainable way." },
+            { icon: Eye, title: "Our vision", text: "An empowered community of Tanzania in which people effectively manage their own lives." },
+            { icon: ShieldCheck, title: "Our goal", text: "That all youth, women, children and people with disabilities are empowered to engage in income-generating activities and contribute to their own prosperity." },
+            { icon: HeartHandshake, title: "Our core values", text: "Professional, empathetic understanding of human values, gender equality, transparency and sustainable, community-led development." },
           ].map((v) => (
             <Card key={v.title} className="flex-row items-start gap-4 p-5">
               <v.icon className="mt-1 size-5 shrink-0 text-secondary" />
@@ -75,6 +93,31 @@ function About() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="container-page grid gap-10 py-16 lg:grid-cols-2">
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">Who we are, officially</h2>
+          <dl className="mt-6 space-y-4">
+            {facts.map((f) => (
+              <div key={f.label} className="border-b pb-4">
+                <dt className="text-xs uppercase tracking-wide text-muted-foreground">{f.label}</dt>
+                <dd className="mt-1 text-sm font-medium">{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">What we work on</h2>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {focusAreas.map((a) => (
+              <li key={a} className="flex gap-2 text-sm text-muted-foreground">
+                <HeartHandshake className="mt-0.5 size-4 shrink-0 text-secondary" />
+                {a}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </SiteLayout>
