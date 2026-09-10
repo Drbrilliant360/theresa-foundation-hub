@@ -187,7 +187,7 @@ function AdminTshirts() {
       <Dialog open={!!draft} onOpenChange={(o) => !o && setDraft(null)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>New t-shirt design</DialogTitle>
+            <DialogTitle>{draft?.id ? "Edit t-shirt design" : "New t-shirt design"}</DialogTitle>
           </DialogHeader>
           {draft && (
             <div className="space-y-4">
