@@ -61,21 +61,28 @@ function AdminTshirts() {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [saving, setSaving] = useState(false);
 
-  const createTemplate = async () => {
+  const saveTemplate = async () => {
     if (!draft) return;
+    if (!draft.name.trim()) {
+      toast.error("Please add a design name");
+      return;
+    }
     setSaving(true);
-    const { error } = await supabase.from("tshirt_templates").insert({
+    const payload = {
       name: draft.name,
       description: draft.description,
       image_key: draft.image_key,
       min_donation_amount: Number(draft.min_donation_amount || 0),
-    });
+    };
+    const { error } = draft.id
+      ? await supabase.from("tshirt_templates").update(payload).eq("id", draft.id)
+      : await supabase.from("tshirt_templates").insert(payload);
     setSaving(false);
     if (error) {
       toast.error(error.message);
       return;
     }
-    toast.success("Design created");
+    toast.success(draft.id ? "Design updated" : "Design created");
     setDraft(null);
     void invalidate("templates");
   };
