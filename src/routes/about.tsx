@@ -66,10 +66,10 @@ function About() {
         />
         <div className="space-y-6">
           {[
-            { icon: Target, title: "Our mission", text: "To unlock opportunity for children and families through education, health and sustainable livelihoods." },
-            { icon: Eye, title: "Our vision", text: "A Tanzania where no child's future is limited by where they were born." },
-            { icon: ShieldCheck, title: "Our promise", text: "Every donation is tracked and reported. 85% of funds go directly to programmes." },
-            { icon: HeartHandshake, title: "Our approach", text: "Partnership first — communities set the priorities, we help resource them." },
+            { icon: Target, title: "Our mission", text: "To capacitate the Tanzanian community to fight poverty and ignorance through health, water and education support and local economic activities, in a sustainable way." },
+            { icon: Eye, title: "Our vision", text: "An empowered community of Tanzania in which people effectively manage their own lives." },
+            { icon: ShieldCheck, title: "Our goal", text: "That all youth, women, children and people with disabilities are empowered to engage in income-generating activities and contribute to their own prosperity." },
+            { icon: HeartHandshake, title: "Our core values", text: "Professional, empathetic understanding of human values, gender equality, transparency and sustainable, community-led development." },
           ].map((v) => (
             <Card key={v.title} className="flex-row items-start gap-4 p-5">
               <v.icon className="mt-1 size-5 shrink-0 text-secondary" />
