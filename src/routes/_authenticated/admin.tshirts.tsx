@@ -156,14 +156,26 @@ function AdminTshirts() {
                 })}
               </div>
 
-              <Button
-                className="mt-4"
-                size="sm"
-                variant="outline"
-                onClick={() => void toggleActive(t.id, !t.active)}
-              >
-                {t.active ? "Hide design" : "Publish design"}
-              </Button>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() =>
+                    setDraft({
+                      id: t.id,
+                      name: t.name,
+                      description: t.description,
+                      image_key: t.image_key,
+                      min_donation_amount: String(t.min_donation_amount),
+                    })
+                  }
+                >
+                  Edit design
+                </Button>
+                <Button size="sm" variant="outline" onClick={() => void toggleActive(t.id, !t.active)}>
+                  {t.active ? "Hide design" : "Publish design"}
+                </Button>
+              </div>
             </div>
           </Card>
         ))}
