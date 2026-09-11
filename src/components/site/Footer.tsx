@@ -10,10 +10,10 @@ export function Footer() {
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-primary-foreground/15">
-              <Heart className="size-5" />
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-foreground p-1">
+              <img src={logoAsset.url} alt="Mama Thereza Karungi Foundation logo" className="size-full object-contain" />
             </span>
-            <span className="font-display text-lg font-semibold">Theresa Foundation</span>
+            <span className="font-display text-lg font-semibold">Mama Thereza Karungi Foundation</span>
           </div>
           <p className="mt-4 text-sm opacity-80">
             Empowering communities across Tanzania through education, healthcare and

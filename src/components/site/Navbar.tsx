@@ -24,11 +24,9 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Heart className="size-5" />
-          </span>
-          <span className="font-display text-lg font-semibold">Theresa Foundation</span>
+        <Link to="/" className="flex min-w-0 items-center gap-2">
+          <img src={logoAsset.url} alt="Mama Thereza Karungi Foundation logo" className="size-10 shrink-0 object-contain" />
+          <span className="truncate font-display text-base font-semibold sm:text-lg">Mama Thereza Karungi Foundation</span>
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
