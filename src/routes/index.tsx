@@ -119,8 +119,8 @@ function Index() {
           <div className="relative">
             <img
               src={heroImage}
-              alt="Children supported by Theresa Foundation programmes in Tanzania"
-              className="h-60 w-full rounded-3xl object-cover shadow-[var(--shadow-lift)] sm:h-80 lg:h-[26rem]"
+              alt="Founder and executive director of the Theresa Foundation"
+              className="h-60 w-full rounded-3xl object-cover object-top shadow-[var(--shadow-lift)] sm:h-80 lg:h-[26rem]"
             />
             <Card className="mt-4 w-full gap-1 p-5 shadow-[var(--shadow-lift)] sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:w-56">
               <span className="text-xs text-muted-foreground">Total raised</span>

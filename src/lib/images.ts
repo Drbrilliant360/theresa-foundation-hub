@@ -9,11 +9,12 @@ import emergency from "@/assets/campaign-emergency.jpg";
 import givingHands from "@/assets/giving-hands.jpg";
 import makeChange from "@/assets/make-change.jpg";
 import careHands from "@/assets/care-hands.jpg";
+import founderPortraitAsset from "@/assets/founder-portrait.jpg.asset.json";
 import tshirtWhiteAsset from "@/assets/tshirt-white.jpg.asset.json";
 import tshirtBlueAsset from "@/assets/tshirt-blue.jpg.asset.json";
 import hoodieNavyAsset from "@/assets/hoodie-navy.jpg.asset.json";
 
-export const heroImage = hero;
+export const heroImage = founderPortraitAsset.url;
 export const aboutImage = about;
 export const savannaImage = water;
 export const givingHandsImage = givingHands;
