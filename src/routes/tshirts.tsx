@@ -47,8 +47,11 @@ function Tshirts() {
                 <img
                   src={imageFor(t.image_key)}
                   alt={`${t.name} supporter t-shirt`}
-                  loading="lazy"
-                  className="h-64 w-full object-cover"
+                  loading="eager"
+                  decoding="async"
+                  width={1000}
+                  height={620}
+                  className="h-64 w-full bg-muted object-contain"
                 />
                 <div className="space-y-3 p-5">
                   <div className="flex items-center justify-between gap-2">
