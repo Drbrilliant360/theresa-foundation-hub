@@ -152,8 +152,23 @@ export function useAdminFaqs() {
 
 /* ---------------- Mutations ---------------- */
 
+/** Public query keys that must refresh when admin content changes. */
+const PUBLIC_KEYS: Record<string, string[][]> = {
+  campaigns: [["campaigns"], ["campaign"], ["impact-stats"]],
+  templates: [["tshirt_templates"], ["tshirt_inventory"]],
+  testimonials: [["testimonials"]],
+  faqs: [["faqs"]],
+  donations: [["impact-stats"], ["my-donations"]],
+  orders: [["my-orders"]],
+};
+
 export function useInvalidateAdmin() {
   const qc = useQueryClient();
-  return (key?: string) =>
-    qc.invalidateQueries({ queryKey: key ? ["admin", key] : ["admin"] });
+  return async (key?: string) => {
+    await qc.invalidateQueries({ queryKey: key ? ["admin", key] : ["admin"] });
+    const publicKeys = key ? (PUBLIC_KEYS[key] ?? []) : Object.values(PUBLIC_KEYS).flat();
+    await Promise.all(
+      publicKeys.map((queryKey) => qc.invalidateQueries({ queryKey, refetchType: "all" })),
+    );
+  };
 }
