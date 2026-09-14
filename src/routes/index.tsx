@@ -122,7 +122,7 @@ function Index() {
               alt="Founder and executive director of the Theresa Foundation"
               className="h-60 w-full rounded-3xl object-cover object-top shadow-[var(--shadow-lift)] sm:h-80 lg:h-[26rem]"
             />
-            <Card className="mt-4 w-full gap-1 p-5 shadow-[var(--shadow-lift)] sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:w-56">
+            <Card className="mt-4 flex w-full flex-col gap-1 p-5 shadow-[var(--shadow-lift)] sm:absolute sm:-bottom-6 sm:left-4 sm:mt-0 sm:w-56">
               <span className="text-xs text-muted-foreground">Total raised</span>
               <span className="font-display text-2xl font-bold text-secondary">
                 {formatTZS(stats?.raised ?? 0)}
