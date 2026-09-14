@@ -65,6 +65,8 @@ function CampaignDetail() {
           <img
             src={imageFor(campaign.image_key)}
             alt={campaign.title}
+            loading="lazy"
+            decoding="async"
             className="h-80 w-full rounded-3xl object-cover"
           />
           <Badge className="mt-6 bg-accent capitalize text-accent-foreground">
