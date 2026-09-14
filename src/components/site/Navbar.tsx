@@ -114,17 +114,23 @@ export function Navbar() {
 
       {/* Mobile slide-out */}
       <div
-        className={`fixed inset-0 top-16 z-40 bg-foreground/40 transition-opacity lg:hidden ${
-          open ? "opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        onClick={() => setOpen(false)}
-        aria-hidden
-      />
-      <div
-        className={`fixed right-0 top-16 z-50 h-[calc(100dvh-4rem)] w-[82%] max-w-xs overflow-y-auto border-l border-border bg-background shadow-[var(--shadow-lift)] transition-transform duration-300 lg:hidden ${
-          open ? "translate-x-0" : "translate-x-full"
+        className={`fixed inset-x-0 bottom-0 top-16 z-40 overflow-hidden lg:hidden ${
+          open ? "" : "pointer-events-none"
         }`}
       >
+        <div
+          className={`absolute inset-0 bg-foreground/40 transition-opacity ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
+          onClick={() => setOpen(false)}
+          aria-hidden
+        />
+        <div
+          className={`absolute right-0 top-0 h-full w-[82%] max-w-xs overflow-y-auto border-l border-border bg-background shadow-[var(--shadow-lift)] transition-transform duration-300 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+
         <nav className="flex flex-col gap-1 p-4">
           {links.map((l) => (
             <Link
