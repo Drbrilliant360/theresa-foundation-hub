@@ -96,7 +96,7 @@ export function Navbar() {
           <Button
             asChild
             size="sm"
-            className="hidden bg-secondary text-secondary-foreground hover:bg-secondary/90 xs:inline-flex sm:inline-flex"
+            className="hidden bg-secondary text-secondary-foreground hover:bg-secondary/90 sm:inline-flex"
           >
             <Link to="/donate">Donate</Link>
           </Button>
