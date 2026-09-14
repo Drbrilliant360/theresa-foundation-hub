@@ -31,7 +31,8 @@ export function Navbar() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
+    <>
+      <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 lg:flex lg:justify-between lg:gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-2">
           <img
