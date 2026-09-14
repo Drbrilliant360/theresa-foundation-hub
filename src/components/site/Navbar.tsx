@@ -111,6 +111,7 @@ export function Navbar() {
           </button>
         </div>
       </div>
+      </header>
 
       {/* Mobile slide-out */}
       <div
