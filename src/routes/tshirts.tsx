@@ -47,7 +47,7 @@ function Tshirts() {
                 <img
                   src={imageFor(t.image_key)}
                   alt={`${t.name} supporter t-shirt`}
-                  loading="eager"
+                  loading="lazy"
                   decoding="async"
                   width={1000}
                   height={620}

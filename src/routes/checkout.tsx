@@ -215,6 +215,8 @@ function CheckoutPage() {
             <img
               src={imageFor(selected.image_key)}
               alt={`${selected.name} supporter t-shirt`}
+              loading="lazy"
+              decoding="async"
               className="h-56 w-full object-cover"
             />
           )}
