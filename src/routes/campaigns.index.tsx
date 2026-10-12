@@ -11,6 +11,10 @@ import { heroImage } from "@/lib/images";
 export const Route = createFileRoute("/campaigns/")({
   head: () => ({
     meta: [
+      { property: "og:image", content: heroImage },
+      { name: "twitter:image", content: heroImage },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Campaigns — Theresa Foundation" },
       {
         name: "description",

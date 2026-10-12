@@ -12,6 +12,8 @@ import { formatDate, formatTZS } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Donor Dashboard — Theresa Foundation" },
       { name: "description", content: "Track your donations, receipts and t-shirt orders." },
       { property: "og:title", content: "Donor Dashboard — Theresa Foundation" },

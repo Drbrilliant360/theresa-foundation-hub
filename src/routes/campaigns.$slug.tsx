@@ -13,6 +13,8 @@ import { useCampaign } from "@/hooks/useData";
 export const Route = createFileRoute("/campaigns/$slug")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Campaign — Theresa Foundation" },
       {
         name: "description",

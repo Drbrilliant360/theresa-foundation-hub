@@ -7,6 +7,8 @@ import { aboutImage, givingHandsImage } from "@/lib/images";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "About Us — Theresa Foundation" },
       {
         name: "description",

@@ -8,6 +8,8 @@ import { careHandsImage } from "@/lib/images";
 export const Route = createFileRoute("/impact")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Our Impact — Theresa Foundation" },
       {
         name: "description",
@@ -44,19 +46,19 @@ function Impact() {
         background={careHandsImage}
       />
 
-      <section className="container-page grid grid-cols-2 gap-6 py-10 sm:py-14 lg:grid-cols-4">
+      <section className="container-page grid grid-cols-1 gap-4 py-10 sm:grid-cols-2 sm:gap-6 sm:py-14 lg:grid-cols-4">
         <Card className="gap-1 p-6">
-          <span className="font-display text-2xl font-bold text-primary">
+          <span className="font-display break-words text-xl font-bold text-primary sm:text-2xl">
             {formatTZS(stats?.raised ?? 0)}
           </span>
           <span className="text-xs uppercase tracking-wide text-muted-foreground">Raised</span>
         </Card>
         <Card className="gap-1 p-6">
-          <span className="font-display text-2xl font-bold text-primary">{stats?.donors ?? 0}</span>
+          <span className="font-display break-words text-xl font-bold text-primary sm:text-2xl">{stats?.donors ?? 0}</span>
           <span className="text-xs uppercase tracking-wide text-muted-foreground">Donors</span>
         </Card>
         <Card className="gap-1 p-6">
-          <span className="font-display text-2xl font-bold text-primary">
+          <span className="font-display break-words text-xl font-bold text-primary sm:text-2xl">
             {stats?.beneficiaries ?? 0}
           </span>
           <span className="text-xs uppercase tracking-wide text-muted-foreground">
@@ -64,7 +66,7 @@ function Impact() {
           </span>
         </Card>
         <Card className="gap-1 p-6">
-          <span className="font-display text-2xl font-bold text-primary">
+          <span className="font-display break-words text-xl font-bold text-primary sm:text-2xl">
             {stats?.volunteers ?? 0}
           </span>
           <span className="text-xs uppercase tracking-wide text-muted-foreground">Volunteers</span>

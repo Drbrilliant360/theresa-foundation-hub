@@ -16,6 +16,8 @@ import { useAdminFaqs, useAdminTestimonials, useInvalidateAdmin } from "@/hooks/
 export const Route = createFileRoute("/_authenticated/admin/content")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Site Content — Admin — Theresa Foundation" },
       { name: "description", content: "Manage testimonials and frequently asked questions." },
       { property: "og:title", content: "Site Content — Admin — Theresa Foundation" },
@@ -132,7 +134,7 @@ function AdminContent() {
 
           {(testimonials ?? []).map((t) => (
             <Card key={t.id} className="p-5">
-              <div className="flex flex-wrap items-start justify-between gap-3">
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                 <div>
                   <p className="font-medium">
                     {t.name} <span className="text-xs text-muted-foreground">· {t.role}</span>
@@ -150,7 +152,7 @@ function AdminContent() {
                   </Button>
                 </div>
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">{t.story}</p>
+              <p className="mt-3 break-words text-sm text-muted-foreground">{t.story}</p>
             </Card>
           ))}
         </TabsContent>
@@ -173,10 +175,10 @@ function AdminContent() {
 
           {(faqs ?? []).map((f) => (
             <Card key={f.id} className="p-5">
-              <div className="flex items-start justify-between gap-3">
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                 <div>
                   <p className="font-medium">{f.question}</p>
-                  <p className="mt-2 text-sm text-muted-foreground">{f.answer}</p>
+                  <p className="mt-2 break-words text-sm text-muted-foreground">{f.answer}</p>
                 </div>
                 <Button size="icon" variant="ghost" onClick={() => void removeFaq(f.id)}>
                   <Trash2 className="size-4 text-destructive" />

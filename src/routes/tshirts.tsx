@@ -11,6 +11,8 @@ import { useTemplates } from "@/hooks/useData";
 export const Route = createFileRoute("/tshirts")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Supporter T-Shirts — Theresa Foundation" },
       {
         name: "description",
@@ -54,9 +56,9 @@ function Tshirts() {
                   className="h-64 w-full bg-muted object-contain"
                 />
                 <div className="space-y-3 p-5">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="font-display text-lg font-semibold">{t.name}</h3>
-                    <Badge variant="secondary">{formatTZS(t.min_donation_amount)}+</Badge>
+                  <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
+                    <h3 className="min-w-0 break-words font-display text-lg font-semibold">{t.name}</h3>
+                    <Badge variant="secondary" className="shrink-0">{formatTZS(t.min_donation_amount)}+</Badge>
                   </div>
                   <p className="text-sm text-muted-foreground">{t.description}</p>
                   <div className="grid gap-2 sm:grid-cols-2">

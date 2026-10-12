@@ -30,6 +30,8 @@ import { formatTZS } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/campaigns")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Campaigns — Admin — Theresa Foundation" },
       { name: "description", content: "Manage fundraising campaigns for the Theresa Foundation." },
       { property: "og:title", content: "Campaigns — Admin — Theresa Foundation" },
@@ -126,7 +128,7 @@ function AdminCampaigns() {
       />
 
       <Card className="overflow-x-auto">
-        <table className="w-full min-w-[720px] text-sm">
+        <table className="admin-data-table w-full min-w-[720px] text-sm">
           <thead className="border-b border-border text-left text-muted-foreground">
             <tr>
               <th className="p-3 font-medium">Campaign</th>
@@ -139,22 +141,23 @@ function AdminCampaigns() {
           <tbody>
             {(campaigns ?? []).map((c) => (
               <tr key={c.id} className="border-b border-border last:border-0">
-                <td className="p-3">
+                <td className="p-3" data-label="Campaign"><div>
                   <p className="font-medium">{c.title}</p>
                   <p className="text-xs text-muted-foreground">/{c.slug}</p>
-                </td>
-                <td className="p-3 text-muted-foreground">{c.category}</td>
-                <td className="p-3">
+                </div></td>
+                <td className="p-3 text-muted-foreground" data-label="Category"><div>{c.category}</div></td>
+                <td className="p-3" data-label="Raised / Goal"><div>
                   {formatTZS(c.raised_amount)}{" "}
                   <span className="text-muted-foreground">/ {formatTZS(c.goal_amount)}</span>
-                </td>
-                <td className="p-3">
+                </div></td>
+                <td className="p-3" data-label="Status"><div>
                   <Badge variant={c.status === "active" ? "default" : "secondary"}>{c.status}</Badge>
                   {c.featured && <Badge variant="outline" className="ml-2">Featured</Badge>}
-                </td>
-                <td className="p-3 text-right">
+                </div></td>
+                <td className="p-3 text-right" data-label="Actions"><div>
                   <Button
                     size="icon"
+                    aria-label={`Edit ${c.title}`}
                     variant="ghost"
                     onClick={() =>
                       setDraft({
@@ -173,10 +176,10 @@ function AdminCampaigns() {
                   >
                     <Pencil className="size-4" />
                   </Button>
-                  <Button size="icon" variant="ghost" onClick={() => void remove(c.id, c.title)}>
+                  <Button size="icon" variant="ghost" aria-label={`Delete ${c.title}`} onClick={() => void remove(c.id, c.title)}>
                     <Trash2 className="size-4 text-destructive" />
                   </Button>
-                </td>
+                </div></td>
               </tr>
             ))}
             {!isLoading && !(campaigns ?? []).length && (
@@ -191,7 +194,7 @@ function AdminCampaigns() {
       </Card>
 
       <Dialog open={!!draft} onOpenChange={(o) => !o && setDraft(null)}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto sm:max-w-lg">
+        <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>{draft?.id ? "Edit campaign" : "New campaign"}</DialogTitle>
           </DialogHeader>

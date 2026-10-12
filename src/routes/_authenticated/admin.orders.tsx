@@ -17,6 +17,8 @@ import { formatDate, ORDER_STEPS, ORDER_STEP_LABELS } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Orders — Admin — Theresa Foundation" },
       { name: "description", content: "Fulfil supporter t-shirt orders." },
       { property: "og:title", content: "Orders — Admin — Theresa Foundation" },
@@ -50,7 +52,7 @@ function AdminOrders() {
       <AdminPageTitle title="T-shirt orders" description="Fulfil supporter t-shirt orders." />
 
       <Card className="overflow-x-auto">
-        <table className="w-full min-w-[820px] text-sm">
+        <table className="admin-data-table w-full min-w-[820px] text-sm">
           <thead className="border-b border-border text-left text-muted-foreground">
             <tr>
               <th className="p-3 font-medium">Donor</th>
@@ -64,15 +66,15 @@ function AdminOrders() {
           <tbody>
             {(orders ?? []).map((o) => (
               <tr key={o.id} className="border-b border-border last:border-0">
-                <td className="p-3">
+                <td className="p-3" data-label="Donor"><div>
                   <p className="font-medium">{o.donations?.donor_name ?? "—"}</p>
                   <p className="text-xs text-muted-foreground">{o.donations?.reference}</p>
-                </td>
-                <td className="p-3 text-muted-foreground">{o.tshirt_templates?.name ?? "—"}</td>
-                <td className="p-3"><Badge variant="outline">{o.size}</Badge></td>
-                <td className="p-3">{o.quantity}</td>
-                <td className="p-3 text-muted-foreground">{formatDate(o.created_at)}</td>
-                <td className="p-3">
+                </div></td>
+                <td className="p-3 text-muted-foreground" data-label="Design"><div>{o.tshirt_templates?.name ?? "—"}</div></td>
+                <td className="p-3" data-label="Size"><div><Badge variant="outline">{o.size}</Badge></div></td>
+                <td className="p-3" data-label="Qty"><div>{o.quantity}</div></td>
+                <td className="p-3 text-muted-foreground" data-label="Ordered"><div>{formatDate(o.created_at)}</div></td>
+                <td className="p-3" data-label="Status"><div>
                   <Select value={o.status} onValueChange={(v) => void setStatus(o.id, v)}>
                     <SelectTrigger className="h-8 w-44"><SelectValue /></SelectTrigger>
                     <SelectContent>
@@ -81,7 +83,7 @@ function AdminOrders() {
                       ))}
                     </SelectContent>
                   </Select>
-                </td>
+                </div></td>
               </tr>
             ))}
             {!(orders ?? []).length && (

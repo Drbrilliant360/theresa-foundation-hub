@@ -221,7 +221,7 @@ function CheckoutPage() {
             />
           )}
           <div className="space-y-4 p-5">
-            <div className="flex items-start justify-between gap-3">
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
               <div className="min-w-0">
                 <h2 className="font-display text-lg font-semibold">{selected?.name ?? "Select a design"}</h2>
                 <p className="text-sm text-muted-foreground">Size {size}</p>

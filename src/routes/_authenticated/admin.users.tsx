@@ -13,6 +13,8 @@ import { formatDate } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/users")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Users — Admin — Theresa Foundation" },
       { name: "description", content: "Manage donor accounts and administrator roles." },
       { property: "og:title", content: "Users — Admin — Theresa Foundation" },
@@ -57,7 +59,7 @@ function AdminUsers() {
       <AdminPageTitle title="Users" description="Donor accounts and administrator roles." />
 
       <Card className="overflow-x-auto">
-        <table className="w-full min-w-[760px] text-sm">
+        <table className="admin-data-table w-full min-w-[760px] text-sm">
           <thead className="border-b border-border text-left text-muted-foreground">
             <tr>
               <th className="p-3 font-medium">Name</th>
@@ -74,11 +76,11 @@ function AdminUsers() {
               const isSelf = p.id === user?.id;
               return (
                 <tr key={p.id} className="border-b border-border last:border-0">
-                  <td className="p-3 font-medium">{p.full_name || "—"}</td>
-                  <td className="p-3 text-muted-foreground">{p.email}</td>
-                  <td className="p-3 text-muted-foreground">{p.phone || "—"}</td>
-                  <td className="p-3 text-muted-foreground">{formatDate(p.created_at)}</td>
-                  <td className="p-3">
+                  <td className="p-3 font-medium" data-label="Name"><div>{p.full_name || "—"}</div></td>
+                  <td className="p-3 text-muted-foreground" data-label="Email"><div>{p.email}</div></td>
+                  <td className="p-3 text-muted-foreground" data-label="Phone"><div>{p.phone || "—"}</div></td>
+                  <td className="p-3 text-muted-foreground" data-label="Joined"><div>{formatDate(p.created_at)}</div></td>
+                  <td className="p-3" data-label="Roles"><div>
                     {p.roles.length ? (
                       p.roles.map((r) => (
                         <Badge key={r} variant={r === "admin" ? "default" : "secondary"} className="mr-1">
@@ -88,8 +90,8 @@ function AdminUsers() {
                     ) : (
                       <Badge variant="secondary">donor</Badge>
                     )}
-                  </td>
-                  <td className="p-3 text-right">
+                  </div></td>
+                  <td className="p-3 text-right" data-label="Actions"><div>
                     {isAdmin ? (
                       <Button
                         size="sm"
@@ -104,7 +106,7 @@ function AdminUsers() {
                         <ShieldCheck className="mr-2 size-4" /> Make admin
                       </Button>
                     )}
-                  </td>
+                  </div></td>
                 </tr>
               );
             })}

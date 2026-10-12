@@ -19,6 +19,8 @@ import { formatDate, formatTZS, paymentLabel } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/donations")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Donations — Admin — Theresa Foundation" },
       { name: "description", content: "Track and update donations for the Theresa Foundation." },
       { property: "og:title", content: "Donations — Admin — Theresa Foundation" },
@@ -73,15 +75,15 @@ function AdminDonations() {
         description={`${rows.length} records · ${formatTZS(total)} completed`}
       />
 
-      <div className="mb-4 flex flex-wrap gap-3">
+      <div className="mb-4 grid gap-3 sm:flex">
         <Input
-          className="max-w-xs"
+          className="w-full sm:max-w-xs"
           placeholder="Search name, email or reference"
           value={q}
           onChange={(e) => setQ(e.target.value)}
         />
         <Select value={status} onValueChange={setStatus}>
-          <SelectTrigger className="w-40"><SelectValue /></SelectTrigger>
+          <SelectTrigger className="w-full sm:w-40"><SelectValue /></SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All statuses</SelectItem>
             {STATUSES.map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
@@ -90,7 +92,7 @@ function AdminDonations() {
       </div>
 
       <Card className="overflow-x-auto">
-        <table className="w-full min-w-[860px] text-sm">
+        <table className="admin-data-table w-full min-w-[860px] text-sm">
           <thead className="border-b border-border text-left text-muted-foreground">
             <tr>
               <th className="p-3 font-medium">Reference</th>
@@ -105,23 +107,23 @@ function AdminDonations() {
           <tbody>
             {rows.map((d) => (
               <tr key={d.id} className="border-b border-border last:border-0">
-                <td className="p-3 font-mono text-xs">{d.reference}</td>
-                <td className="p-3">
+                <td className="p-3 font-mono text-xs" data-label="Reference"><div>{d.reference}</div></td>
+                <td className="p-3" data-label="Donor"><div>
                   <p className="font-medium">{d.anonymous ? "Anonymous" : d.donor_name}</p>
                   <p className="text-xs text-muted-foreground">{d.donor_email}</p>
-                </td>
-                <td className="p-3 text-muted-foreground">{d.campaigns?.title ?? "General fund"}</td>
-                <td className="p-3 font-semibold">{formatTZS(d.amount)}</td>
-                <td className="p-3 text-muted-foreground">{paymentLabel(d.payment_method)}</td>
-                <td className="p-3 text-muted-foreground">{formatDate(d.created_at)}</td>
-                <td className="p-3">
+                </div></td>
+                <td className="p-3 text-muted-foreground" data-label="Campaign"><div>{d.campaigns?.title ?? "General fund"}</div></td>
+                <td className="p-3 font-semibold" data-label="Amount"><div>{formatTZS(d.amount)}</div></td>
+                <td className="p-3 text-muted-foreground" data-label="Method"><div>{paymentLabel(d.payment_method)}</div></td>
+                <td className="p-3 text-muted-foreground" data-label="Date"><div>{formatDate(d.created_at)}</div></td>
+                <td className="p-3" data-label="Status"><div>
                   <Select value={d.status} onValueChange={(v) => void setDonationStatus(d.id, v)}>
                     <SelectTrigger className="h-8 w-32"><SelectValue /></SelectTrigger>
                     <SelectContent>
                       {STATUSES.map((s) => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                     </SelectContent>
                   </Select>
-                </td>
+                </div></td>
               </tr>
             ))}
             {!rows.length && (
@@ -133,7 +135,7 @@ function AdminDonations() {
         </table>
       </Card>
 
-      <div className="mt-4 flex gap-2 text-xs text-muted-foreground">
+      <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted-foreground">
         {STATUSES.map((s) => (
           <Badge key={s} variant="outline">
             {s}: {(donations ?? []).filter((d) => d.status === s).length}
