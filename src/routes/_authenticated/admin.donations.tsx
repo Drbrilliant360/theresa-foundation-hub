@@ -19,6 +19,8 @@ import { formatDate, formatTZS, paymentLabel } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/donations")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Donations — Admin — Theresa Foundation" },
       { name: "description", content: "Track and update donations for the Theresa Foundation." },
       { property: "og:title", content: "Donations — Admin — Theresa Foundation" },

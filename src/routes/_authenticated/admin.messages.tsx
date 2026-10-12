@@ -11,6 +11,8 @@ import { formatDate } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/messages")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Messages — Admin — Theresa Foundation" },
       { name: "description", content: "Enquiries submitted through the contact form." },
       { property: "og:title", content: "Messages — Admin — Theresa Foundation" },

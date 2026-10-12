@@ -101,21 +101,24 @@ export function Navbar() {
           >
             <Link to="/donate">Donate</Link>
           </Button>
-          <button
+          <Button
             type="button"
-            className="grid size-10 shrink-0 place-items-center rounded-md text-foreground hover:bg-muted"
+            variant="ghost"
+            size="icon"
+            className="grid size-11 shrink-0 place-items-center rounded-md text-foreground hover:bg-muted"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((o) => !o)}
           >
             {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
+          </Button>
         </div>
       </div>
       </header>
 
       {/* Mobile slide-out */}
       <div
+        inert={!open}
         className={`fixed inset-x-0 bottom-0 top-16 z-40 overflow-hidden lg:hidden ${
           open ? "" : "pointer-events-none"
         }`}

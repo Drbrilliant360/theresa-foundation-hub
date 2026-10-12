@@ -13,6 +13,8 @@ import { formatDate } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/users")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Users — Admin — Theresa Foundation" },
       { name: "description", content: "Manage donor accounts and administrator roles." },
       { property: "og:title", content: "Users — Admin — Theresa Foundation" },

@@ -18,6 +18,8 @@ export const Route = createFileRoute("/auth")({
   }),
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Login or Register — Theresa Foundation" },
       {
         name: "description",
@@ -83,8 +85,8 @@ function AuthPage() {
 
   return (
     <SiteLayout>
-      <section className="container-page flex justify-center py-16">
-        <Card className="w-full max-w-md p-8">
+      <section className="container-page flex justify-center py-10 sm:py-16">
+        <Card className="w-full max-w-md p-5 sm:p-8">
           <h1 className="text-2xl font-bold">Donor account</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Track your donations, receipts and t-shirt orders.

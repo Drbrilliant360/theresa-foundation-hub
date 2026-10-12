@@ -17,6 +17,8 @@ import { formatDate, ORDER_STEPS, ORDER_STEP_LABELS } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/orders")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Orders — Admin — Theresa Foundation" },
       { name: "description", content: "Fulfil supporter t-shirt orders." },
       { property: "og:title", content: "Orders — Admin — Theresa Foundation" },

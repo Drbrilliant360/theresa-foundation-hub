@@ -24,6 +24,8 @@ import { imageFor } from "@/lib/images";
 export const Route = createFileRoute("/_authenticated/admin/tshirts")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "T-Shirts — Admin — Theresa Foundation" },
       { name: "description", content: "Manage supporter t-shirt designs and inventory." },
       { property: "og:title", content: "T-Shirts — Admin — Theresa Foundation" },

@@ -25,6 +25,10 @@ import { useCampaigns, useFaqs, useImpactStats, useTestimonials } from "@/hooks/
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
+      { property: "og:image", content: heroImage },
+      { name: "twitter:image", content: heroImage },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Theresa Foundation — Together We Can Change Lives" },
       {
         name: "description",
@@ -137,7 +141,7 @@ function Index() {
 
       {/* Impact counters */}
       <section className="bg-surface py-10 sm:py-16">
-        <div className="container-page grid grid-cols-2 gap-6 lg:grid-cols-5">
+        <div className="container-page grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-5">
           {[
             { label: "TZS raised", value: stats?.raised ?? 0 },
             { label: "Donors", value: stats?.donors ?? 0 },
@@ -145,8 +149,8 @@ function Index() {
             { label: "Campaigns", value: stats?.campaigns ?? 0 },
             { label: "Beneficiaries", value: stats?.beneficiaries ?? 0 },
           ].map((s) => (
-            <Card key={s.label} className="items-center gap-1 p-6 text-center">
-              <span className="font-display text-3xl font-bold text-primary">
+            <Card key={s.label} className="min-w-0 items-center gap-1 p-4 text-center last:col-span-2 sm:p-6 lg:last:col-span-1">
+              <span className="font-display break-words text-2xl font-bold text-primary sm:text-3xl">
                 <Counter value={s.value} />
               </span>
               <span className="text-xs uppercase tracking-wide text-muted-foreground">

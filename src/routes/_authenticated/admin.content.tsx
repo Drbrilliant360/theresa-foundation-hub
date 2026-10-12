@@ -16,6 +16,8 @@ import { useAdminFaqs, useAdminTestimonials, useInvalidateAdmin } from "@/hooks/
 export const Route = createFileRoute("/_authenticated/admin/content")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Site Content — Admin — Theresa Foundation" },
       { name: "description", content: "Manage testimonials and frequently asked questions." },
       { property: "og:title", content: "Site Content — Admin — Theresa Foundation" },

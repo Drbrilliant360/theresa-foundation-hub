@@ -30,6 +30,8 @@ import { formatTZS } from "@/lib/format";
 export const Route = createFileRoute("/_authenticated/admin/campaigns")({
   head: () => ({
     meta: [
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { title: "Campaigns — Admin — Theresa Foundation" },
       { name: "description", content: "Manage fundraising campaigns for the Theresa Foundation." },
       { property: "og:title", content: "Campaigns — Admin — Theresa Foundation" },
