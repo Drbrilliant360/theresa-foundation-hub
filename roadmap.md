@@ -1,0 +1,3 @@
+- [ ] Improve admin mobile navigation, tables, forms, and long-text handling.
+- [ ] Verify signed-in admin flows and public pages at phone and tablet widths.
+- [ ] Apply the required package security update and confirm the preview is healthy.
