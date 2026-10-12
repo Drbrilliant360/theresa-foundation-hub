@@ -124,9 +124,9 @@ function AdminTshirts() {
       <div className="grid gap-6 lg:grid-cols-2">
         {(templates ?? []).map((t) => (
           <Card key={t.id} className="overflow-hidden">
-            <img src={imageFor(t.image_key)} alt={t.name} className="h-44 w-full object-cover" loading="lazy" />
+            <img src={imageFor(t.image_key)} alt={t.name} className="h-44 w-full object-contain" loading="lazy" />
             <div className="p-5">
-              <div className="flex items-start justify-between gap-3">
+              <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
                 <div>
                   <h2 className="font-display font-semibold">{t.name}</h2>
                   <p className="text-xs text-muted-foreground">
@@ -135,7 +135,7 @@ function AdminTshirts() {
                 </div>
                 <Badge variant={t.active ? "default" : "secondary"}>{t.active ? "Active" : "Hidden"}</Badge>
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">{t.description}</p>
+              <p className="mt-2 break-words text-sm text-muted-foreground">{t.description}</p>
 
               <div className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6">
                 {TSHIRT_SIZES.map((size) => {

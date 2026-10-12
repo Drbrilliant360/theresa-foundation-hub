@@ -48,11 +48,11 @@ function AdminOverview() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((s) => (
           <Card key={s.label} className="p-5">
-            <div className="flex items-center justify-between">
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
               <p className="text-sm text-muted-foreground">{s.label}</p>
               <s.icon className="size-4 text-primary" />
             </div>
-            <p className="mt-2 text-2xl font-bold">{s.value}</p>
+            <p className="mt-2 break-words text-xl font-bold sm:text-2xl">{s.value}</p>
             <p className="mt-1 text-xs text-muted-foreground">{s.hint}</p>
           </Card>
         ))}
@@ -63,7 +63,7 @@ function AdminOverview() {
           <h2 className="font-display font-semibold">Recent donations</h2>
           <div className="mt-4 space-y-3">
             {(donations ?? []).slice(0, 6).map((d) => (
-              <div key={d.id} className="flex items-center justify-between gap-3 border-b border-border pb-3 last:border-0">
+              <div key={d.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border pb-3 last:border-0">
                 <div className="min-w-0">
                   <p className="truncate text-sm font-medium">{d.donor_name}</p>
                   <p className="truncate text-xs text-muted-foreground">

@@ -44,24 +44,24 @@ function AdminMessages() {
       <div className="grid gap-4">
         {(messages ?? []).map((m) => (
           <Card key={m.id} className="p-5">
-            <div className="flex flex-wrap items-start justify-between gap-3">
+            <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3">
               <div>
                 <p className="font-medium">{m.name}</p>
                 <a
                   href={`mailto:${m.email}`}
-                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                  className="inline-flex max-w-full items-center gap-1 break-all text-xs text-primary hover:underline"
                 >
                   <Mail className="size-3" /> {m.email}
                 </a>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex shrink-0 flex-col items-end gap-2 sm:flex-row sm:items-center">
                 <span className="text-xs text-muted-foreground">{formatDate(m.created_at)}</span>
                 <Button size="icon" variant="ghost" onClick={() => void remove(m.id)}>
                   <Trash2 className="size-4 text-destructive" />
                 </Button>
               </div>
             </div>
-            <p className="mt-3 whitespace-pre-wrap text-sm text-muted-foreground">{m.message}</p>
+            <p className="mt-3 whitespace-pre-wrap break-words text-sm text-muted-foreground">{m.message}</p>
           </Card>
         ))}
         {!(messages ?? []).length && (
