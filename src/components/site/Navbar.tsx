@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useIsAdmin } from "@/hooks/useAdmin";
@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 lg:flex lg:justify-between lg:gap-6">
         <Link to="/" className="flex min-w-0 items-center gap-2">
           <img
-            src={logoAsset.url}
+            src={logoAsset}
             alt="Mama Thereza Karungi Foundation logo"
             className="size-9 shrink-0 object-contain sm:size-10"
           />

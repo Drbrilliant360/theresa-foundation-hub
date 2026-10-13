@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoAsset from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -12,7 +12,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2">
             <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary-foreground p-1">
-              <img src={logoAsset.url} alt="Mama Thereza Karungi Foundation logo" className="size-full object-contain" />
+              <img src={logoAsset} alt="Mama Thereza Karungi Foundation logo" className="size-full object-contain" />
             </span>
             <span className="font-display text-lg font-semibold">Mama Thereza Karungi Foundation</span>
           </div>

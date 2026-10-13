@@ -11,3 +11,4 @@
 
 - Admin record tables use the `admin-data-table` class with labeled cell wrappers so the same data and actions render as stacked records on phones and tables on larger screens.
 - Shared dialogs constrain their size to the dynamic viewport and scroll internally so admin forms remain reachable on phones.
+- Keep app images as regular files in src/assets imported directly (not Lovable CDN pointers), because the site is also hosted on Vercel where /__l5e URLs don't resolve.
