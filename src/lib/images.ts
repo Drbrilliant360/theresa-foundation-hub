@@ -9,21 +9,21 @@ import emergency from "@/assets/campaign-emergency.jpg";
 import givingHands from "@/assets/giving-hands.jpg";
 import makeChange from "@/assets/make-change.jpg";
 import careHands from "@/assets/care-hands.jpg";
-import founderPortraitAsset from "@/assets/founder-portrait.jpg.asset.json";
-import tshirtWhiteAsset from "@/assets/tshirt-white.jpg.asset.json";
-import tshirtBlueAsset from "@/assets/tshirt-blue.jpg.asset.json";
-import hoodieNavyAsset from "@/assets/hoodie-navy.jpg.asset.json";
+import founderPortraitAsset from "@/assets/founder-portrait.jpg";
+import tshirtWhiteAsset from "@/assets/tshirt-white.jpg";
+import tshirtBlueAsset from "@/assets/tshirt-blue.jpg";
+import hoodieNavyAsset from "@/assets/hoodie-navy.jpg";
 
-export const heroImage = founderPortraitAsset.url;
+export const heroImage = founderPortraitAsset;
 export const aboutImage = about;
 export const savannaImage = water;
 export const givingHandsImage = givingHands;
 export const makeChangeImage = makeChange;
 export const careHandsImage = careHands;
 
-export const tshirtWhite = tshirtWhiteAsset.url;
-export const tshirtBlue = tshirtBlueAsset.url;
-export const hoodieNavy = hoodieNavyAsset.url;
+export const tshirtWhite = tshirtWhiteAsset;
+export const tshirtBlue = tshirtBlueAsset;
+export const hoodieNavy = hoodieNavyAsset;
 
 const imageMap: Record<string, string> = {
   education,
