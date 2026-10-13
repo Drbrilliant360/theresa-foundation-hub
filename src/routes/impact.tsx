@@ -76,12 +76,12 @@ function Impact() {
       <section className="bg-surface py-16">
         <div className="container-page">
           <h2 className="text-2xl font-bold sm:text-3xl">Programme outcomes</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
             {outcomes.map((o) => (
-              <Card key={o.title} className="gap-1 p-6">
+              <Card key={o.title} className="min-w-0 gap-1 p-6">
                 <span className="font-display text-3xl font-bold text-secondary">{o.value}</span>
-                <span className="font-semibold">{o.title}</span>
-                <span className="text-sm text-muted-foreground">{o.text}</span>
+                <span className="break-words font-semibold">{o.title}</span>
+                <span className="break-words text-sm text-muted-foreground">{o.text}</span>
               </Card>
             ))}
           </div>
